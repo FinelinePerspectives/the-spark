@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins Regular', sans-serif;
+    background: $c-light-brown;
+    color: $c-white;
+}
+
+
+.container {
+    max-width: 2560px;
+    margin: auto;
+
+}
+
+header, section, footer {
+    padding: 0 80px;
+
+    @include breakpointDown($bp-mobile-lg) {
+        padding: 0 35px;
+    }
+}
+
+.contentWrapper {
+    max-width: 1163px;
+    margin: auto;
+
+    @include breakpointDown($bp-tablet-md) {
+        max-width: 964px;
+    }
+
+    @include breakpointDown($bp-mobile-sm) {
+        max-width: 449px;
+    }
+
+    &[data-wrapper='outer'] {
+    }
+
+    // &[data-wrapper='inner'] {
+    //     background: blue;
+    //     max-width: 1169px;
+    //     margin: auto;
+    // }
+
+    // @include breakpointDown($bp-tablet-md) {
+    //     max-width: 946px;
+    //     margin: 0 115px;
+    // }
+
+    // @include breakpointDown($bp-mobile-md) {
+    //     max-width: 449px;
+    //     margin: auto;
+    // }
+}
+
+.nav {
+    .contentWrapper {
+        background: red;
+        padding-left: 165px;
+        max-width: 2062px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+
+        @include breakpointDown($bp-desktop-sm) {
+            padding: 0 35px;
+        }
+
+        img {
+            width: 338px;
+        }
+    }
+}
+
+.hero {
+    background: $c-dark-brown;
+    color: $c-white;
+}
+
+.navSecondary {
+    background: $c-white;
+    color: $c-light-brown;
+}
+
+.timeline {
+    background: $c-light-brown;
+    color: $c-white;
+}
+
+.layouts {
+    background: $c-white;
+    color: $c-dark-brown;
+}
+
+.listings {
+    background: $c-beige;
+    color: $c-dark-brown;
+}
+
+.amenities {
+    &__header {
+        background: $c-dark-brown;
+        color: $c-white;    
+    }
+
+    &__cards {
+        background: $c-white;
+        color: $c-dark-brown;
+    }
+}
+
+.location {
+    background: url('../assets/images/img-local-2560.jpg') $c-light-brown;
+    background-position: top right;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 200px;
+    color: $c-white;
+
+    .contentWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+.map {
+    background: $c-white;
+    color: $c-dark-brown;
+}
+
+.faq {
+    background: $c-white;
+    color: $c-dark-brown;
+}
+
+.about {
+    background: $c-dark-brown;
+    color: $c-white;
+}
+
+.steps {
+    &__header {
+        background: url('../assets/images/bg-img-123-2560.jpg');
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 200px;
+    }
+
+    background: $c-white;
+    color: $c-dark-brown;
+}
+
+.contact {
+    background: $c-light-brown;
+    color: $c-white;
+}
+
+.footer {
+    background: $c-white;
+    color: $c-dark-brown;
+
+    .contentWrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+        max-width: 1560px;
+    }
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Spark</title>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/micromodal/dist/micromodal.min.js"></script>
+    <!-- Google Maps polyfill -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeGZ5ha4FkhvwlVte4lW63pEvaVt2PViA"
+    ></script> -->
+  </head>
+  <body>
+    <main class="container">
+      <%= require('html-loader!./partials/content.html').default %>
+      <!--  -->
+    </main>
+  </body>
+</html>

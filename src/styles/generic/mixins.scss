@@ -1,0 +1,121 @@
+@mixin btnTransition {
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, font-family 0.2s ease;
+}
+
+@mixin breakpointDown($screen) {
+    @media (max-width: $screen) {
+        @content;
+    }
+ }
+
+@mixin breakpointUp($screen) {
+    @media (min-width: $screen) {
+        @content;
+    }
+ }
+
+
+@mixin contentMaxWidth() {
+    max-width: 1920px;
+}
+
+@mixin hoverResponse() {
+    &:hover {
+        transform: translateY(-2px);
+    }
+}
+
+@mixin activeResponse() {
+    &:active {
+        transform: translateY(2px);
+    }
+}
+
+@mixin sectionPadding() {
+    padding: 50px 100px;
+
+    @include breakpointDown($bp-tablet-sm) {
+        padding: 25px;
+    }
+}
+
+@mixin slideFadeIn() {
+    transition: opacity 0.5s ease-in-out;
+}
+
+@mixin subheaderBar() {
+    margin: auto;
+    padding: 15px;
+}
+
+@mixin sectionSpaceBottom() {
+    margin-bottom: 125px;
+    
+    @include breakpointDown($bp-desktop-sm) {
+        margin-bottom: 100px;
+    }
+
+    @include breakpointDown($bp-tablet-sm) {
+        margin-bottom: 75px;
+    }
+
+    @include breakpointDown($bp-mobile-lg) {
+        margin-bottom: 40px;
+    }
+
+    @include breakpointDown($bp-mobile-md) {
+        margin-bottom: 25px;
+    }
+}
+
+@mixin copyLarger() {
+    font-size: 28px;
+    line-height: 37px;
+
+    @include breakpointDown($bp-tablet-lg) {
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    @include breakpointDown($bp-mobile-lg) {
+        font-size: 18px;
+        line-height: 22px;
+    }
+}
+
+@mixin navScrollOffset() {
+    scroll-margin-top: $nav-offset-desktop;
+
+    @include breakpointDown($bp-tablet-lg) {
+        scroll-margin-top: $nav-offset-tablet;
+    }
+}
+
+@mixin initTenantBG($desktop, $mobile) {
+    background: url($desktop);
+    background-size: cover;
+    background-position: top left;
+    background-repeat: no-repeat;
+    transition: background 0.2s ease-in-out;
+
+    @include breakpointDown($bp-tablet-lg) {
+        background: url($mobile);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;  
+        transition: background 0.2s ease-in-out;  
+    }
+
+    @include breakpointDown($bp-mobile-lg) {
+        background: $c-blue-4;
+        transition: background 0.2s ease-in-out;
+    }
+}
+
+@mixin initSwiperContainer() {
+    overflow: hidden;
+
+    .swiper-slide {
+        width: max-content;
+    }
+}
