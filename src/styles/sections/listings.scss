@@ -1,0 +1,91 @@
+.listings {
+    background: $c-light-beige;
+    color: $c-dark-brown;
+
+    text-align: center;
+
+    &__container {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        row-gap: 25px;
+    }
+
+    &__item {
+        background: $c-dark-brown;
+        color: $c-white;
+        width: 100%;
+
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        font-size: 20px;
+        line-height: 14px;
+
+        padding: 25px 50px;
+
+        column-gap: 10px;
+
+        @include breakpointDown($bp-tablet-md) {
+            padding: 25px;
+        }
+
+        @include breakpointDown($bp-mobile-lg) {
+            flex-flow: row wrap;
+            padding: 0;
+            column-gap: 0;
+        }
+
+        &--col {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &[data-col="availability"] {
+                max-width: 100px;
+            }
+
+            @include breakpointDown($bp-mobile-lg) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 75px;
+                padding: 0 10px;
+
+                &[data-col="type"] {
+                    order: 1;
+                    flex: 1 0 48%;
+                    border-bottom: 2px solid $c-white;
+                }
+                &[data-col="price"] {
+                    order: 3;
+                    flex: 1 0 30%;
+                }
+                &[data-col="floorplan"] {
+                    order: 2;
+                    flex: 1 0 48%;
+                    border-bottom: 2px solid $c-white;
+                }
+                &[data-col="vr"] {
+                    order: 4;
+                    flex: 1 0 30%;
+                    border-left: 2px solid $c-white;
+                    border-right: 2px solid $c-white;
+                }
+                &[data-col="availability"] {
+                    order: 5;
+                    flex: 1 0 30%;
+                    max-width: unset;
+                }
+                &[data-col="contact"] {
+                    order: 6;
+                    flex: 1 0 100%;
+                    border-top: 2px solid $c-white;
+                }
+            }
+        }
+    }
+}

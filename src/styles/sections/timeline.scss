@@ -1,0 +1,8 @@
+.timeline {
+    h2 {
+        @include breakpointDown($bp-tablet-md) {
+            font-size: 46px;
+            line-height: 58px;
+        }
+    }
+}

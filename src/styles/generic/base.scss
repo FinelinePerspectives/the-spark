@@ -30,7 +30,7 @@ header, section, footer {
 }
 
 .contentWrapper {
-    max-width: 1163px;
+    max-width: 1169px;
     margin: auto;
 
     @include breakpointDown($bp-tablet-md) {
@@ -43,22 +43,6 @@ header, section, footer {
 
     &[data-wrapper='outer'] {
     }
-
-    // &[data-wrapper='inner'] {
-    //     background: blue;
-    //     max-width: 1169px;
-    //     margin: auto;
-    // }
-
-    // @include breakpointDown($bp-tablet-md) {
-    //     max-width: 946px;
-    //     margin: 0 115px;
-    // }
-
-    // @include breakpointDown($bp-mobile-md) {
-    //     max-width: 449px;
-    //     margin: auto;
-    // }
 }
 
 .nav {
@@ -96,11 +80,6 @@ header, section, footer {
 
 .layouts {
     background: $c-white;
-    color: $c-dark-brown;
-}
-
-.listings {
-    background: $c-beige;
     color: $c-dark-brown;
 }
 

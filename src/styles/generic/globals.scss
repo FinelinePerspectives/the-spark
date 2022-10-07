@@ -1,0 +1,47 @@
+h1 {
+    font-family: 'Poppins Semi Bold', sans-serif;
+    font-size: 52px;
+    line-height: 61px;
+    margin: 0;
+
+    @include breakpointDown($bp-tablet-md) {
+        font-size: 40px;
+        line-height: 48px;
+    }
+}
+
+h2 {
+    font-family: 'Poppins Semi Bold', sans-serif;
+    font-size: 46px;
+    line-height: 58px;
+    margin: 0;
+
+    @include breakpointDown($bp-tablet-md) {
+        font-size: 30px;
+        line-height: 36px;
+    }
+}
+
+p {
+    font-family: 'Poppins Regular', sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    margin: 0;
+
+    @include breakpointDown($bp-tablet-md) {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    &.bold {
+        font-family: 'Poppins Semi Bold', sans-serif;
+    }
+}
+
+a, button {
+    font-size: inherit;
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    box-sizing: border-box;
+}
