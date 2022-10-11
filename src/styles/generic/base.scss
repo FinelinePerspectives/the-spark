@@ -40,9 +40,6 @@ header, section, footer {
     @include breakpointDown($bp-mobile-sm) {
         max-width: 449px;
     }
-
-    &[data-wrapper='outer'] {
-    }
 }
 
 .nav {
@@ -50,7 +47,7 @@ header, section, footer {
         padding-left: 165px;
         max-width: 2062px;
         display: flex;
-        flex-flow: row nowrap;
+        flex-flow: row wrap;
         justify-content: space-between;
 
         @include breakpointDown($bp-desktop-sm) {

@@ -1,0 +1,122 @@
+.layouts {
+    &__container {
+        display: flex;
+        flex-flow: column nowrap;
+        column-gap: 30px;
+        row-gap: 30px;
+    }
+
+    &__header {
+        flex: 1 0 30%;
+
+        h2 {
+            span {
+                color: $c-gold;
+            }
+
+            br {
+                @include breakpointDown($bp-desktop-sm) {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    &__video {
+        flex: 1 0 64%;
+        background: $c-light-grey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 320px;
+        @include breakpointDown($bp-tablet-sm) {
+            flex: unset;
+        }
+    }
+
+    &__row {
+        display: flex;
+        flex-flow: row nowrap;
+        column-gap: 30px;
+        max-height: 320px;
+
+
+        @include breakpointDown($bp-tablet-sm) {
+            flex-flow: column nowrap;
+        }
+    }
+
+    &__gallery {
+        display: flex;
+        
+        @include breakpointDown($bp-tablet-sm) {
+            display: none;
+        }
+    }
+
+    &__swiper {
+        display: none;
+        position: relative;
+        overflow: hidden;
+        
+        @include breakpointDown($bp-tablet-sm) {
+            display: block;
+        }
+
+        .swiper-slide {
+            width: 70%;
+            height: 300px;
+            opacity: 0;
+            transition: opacity 0.2s ease-in;
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            &-active {
+                opacity: 1;
+                transition: opacity 0.2s ease-in;
+            }
+        }
+
+        &-prev {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 12.5%;
+            z-index: 2;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &-next {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 12.5%;
+            z-index: 2;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    &__img {
+        flex: 1 0 30%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+}

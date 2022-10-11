@@ -56,6 +56,8 @@
         border: 5px solid $c-white;
         border-radius: 5px;
         z-index: 1;
+
+        display: none;
     }
 
     &__markers {

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35.3" height="35.3" viewBox="0 0 35.3 35.3">
+  <g id="Group_11958" data-name="Group 11958" transform="translate(-120 -5173.862)">
+    <g id="icon-arrow-left" transform="translate(120 5173.862)">
+      <g id="Badge">
+        <g id="Area" fill="none" stroke="#290916" stroke-width="1.5">
+          <rect width="35.3" height="35.3" rx="17.65" stroke="none"/>
+          <rect x="0.75" y="0.75" width="33.8" height="33.8" rx="16.9" fill="none"/>
+        </g>
+      </g>
+      <g id="Badge-2" data-name="Badge" transform="translate(2.809 3.915)">
+        <g id="Icon" transform="translate(0 0)">
+          <rect id="Area-2" data-name="Area" width="28.279" height="27.471" fill="#fcfcfc" opacity="0"/>
+          <g id="Icon-2" data-name="Icon" transform="translate(10.689 7.058)">
+            <path id="Path" d="M14.425,18.851,7.5,11.925,14.425,5" transform="translate(-7.5 -5)" fill="none" stroke="#290916" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
