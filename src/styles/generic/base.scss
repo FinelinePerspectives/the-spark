@@ -80,18 +80,6 @@ header, section, footer {
     color: $c-dark-brown;
 }
 
-.amenities {
-    &__header {
-        background: $c-dark-brown;
-        color: $c-white;    
-    }
-
-    &__cards {
-        background: $c-white;
-        color: $c-dark-brown;
-    }
-}
-
 .location {
     background: url('../assets/images/img-local-2560.jpg') $c-light-brown;
     background-position: top right;

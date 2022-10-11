@@ -6,6 +6,7 @@ import 'swiper/css/pagination';
 
 function initSwipers() {
   let layoutsSwiper;
+  let amenitiesSwiper;
 
   layoutsSwiper = new Swiper(`.layouts__swiper`, {
     slidesPerView: "auto",
@@ -18,6 +19,24 @@ function initSwipers() {
     navigation: {
       nextEl: '.layouts__swiper-next',
       prevEl: '.layouts__swiper-prev',
+    },
+    modules: [Navigation, Pagination],
+    centeredSlides: true,
+    centerMode: true,
+  });
+  
+  amenitiesSwiper = new Swiper(`.amenities__swiper`, {
+    slidesPerView: "auto",
+    spaceBetween: 30,
+    loop: true,
+    effect: 'fade',
+    pagination: {
+      el: '.amenities__swiper-pagination',
+      clickable: true
+    },
+    navigation: {
+      nextEl: '.amenities__swiper-next',
+      prevEl: '.amenities__swiper-prev',
     },
     modules: [Navigation, Pagination],
     centeredSlides: true,
