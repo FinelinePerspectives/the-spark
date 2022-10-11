@@ -19,6 +19,13 @@
       defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeGZ5ha4FkhvwlVte4lW63pEvaVt2PViA"
     ></script> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <main class="container">
@@ -35,11 +42,9 @@
         <div class="contentWrapper">Nav Secondary</div>
       </section>
     
-      <section id="timeline" class="timeline">
-        <div class="contentWrapper" data-wrapper="outer">
-          <h2>construction timeline</h2>
-        </div>
-      </section>
+      <%= require('html-loader!./partials/timeline.html').default %>
+      <!--  -->
+      
     
       <section id="layouts" class="layouts">
         <div class="contentWrapper">
