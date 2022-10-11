@@ -75,27 +75,6 @@ header, section, footer {
     color: $c-white;
 }
 
-.layouts {
-    background: $c-white;
-    color: $c-dark-brown;
-}
-
-.location {
-    background: url('../assets/images/img-local-2560.jpg') $c-light-brown;
-    background-position: top right;
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 200px;
-    color: $c-white;
-
-    .contentWrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
-}
-
 .map {
     background: $c-white;
     color: $c-dark-brown;

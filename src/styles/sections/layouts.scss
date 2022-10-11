@@ -1,4 +1,7 @@
 .layouts {
+    background: $c-white;
+    color: $c-dark-brown;
+
     &__container {
         display: flex;
         flex-flow: column nowrap;

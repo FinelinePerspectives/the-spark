@@ -1,0 +1,82 @@
+.location {
+    background: url('../assets/images/img-local-2560.jpg') $c-light-brown;
+    background-position: top right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 521px;
+    color: $c-white;
+    text-align: center;
+
+    @include breakpointDown($bp-mobile-lg) {
+        background: $c-light-brown;
+    }
+
+    .contentWrapper {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+
+        @include breakpointUp($bp-tablet-md) {
+            align-items: flex-start;
+        }
+    }
+
+    h2 {
+        &:nth-of-type(1) {
+            color: $c-black-1;
+        }
+    }
+}
+
+#googleMap {
+    height: 445px;
+    background: $c-light-grey;
+
+    margin-top: -50px;
+    z-index: 2;
+
+}
+
+.map {
+    position: relative;
+    
+    &__controls {
+        background: $c-light-brown;
+
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        column-gap: 25px;
+        row-gap: 10px;
+        padding: 25px 15px;
+
+        .btn-icon {
+            flex: 1 0 max-content;
+            max-width: max-content;
+        }
+    }
+
+    &__legend {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        align-items: center;
+
+        background: $c-dark-brown;
+        color: $c-white;
+
+        padding: 25px 75px;
+        column-gap: 30px;
+        row-gap: 30px;
+    }
+
+    &__item {
+        flex: 1 0 30%;
+        max-width: 30%;
+        height: 50px;
+    }
+}

@@ -33,5 +33,48 @@ button {
             transition: all 0.2s ease-in-out;
         }
     }
+
+    &-icon {
+        background: $c-white;
+        color: $c-dark-brown;
+        padding: 0;
+        height: 48px;
+        column-gap: 15px;
+        
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: center;
+
+        padding-right: 15px;
+
+        &__img {
+            height: 48px;
+            width: 48px;
+            border-radius: 50%;
+            background: $c-gold;
+            margin-left: -3px;
+        }
+
+        &.active {
+            background: $c-gold;
+            color: $c-white;
+
+            .btn-icon__img {
+                background: $c-white;
+            }
+        }
+
+        &:hover {
+            background: $c-gold;
+            color: $c-white;
+            transition: background 0.2s ease-in-out;
+
+            .btn-icon__img {
+                background: $c-white;
+                transition: background 0.2s ease-in-out;
+            }
+        }
+    }
 }
 
