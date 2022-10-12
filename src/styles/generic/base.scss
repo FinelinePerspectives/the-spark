@@ -16,6 +16,7 @@ body {
 
 
 .container {
+    background: $c-white;
     max-width: 2560px;
     margin: auto;
 
@@ -76,8 +77,6 @@ header, section, footer {
 }
 
 .map {
-    background: $c-white;
-    color: $c-dark-brown;
 }
 
 .faq {

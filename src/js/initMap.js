@@ -3,7 +3,7 @@ const mapItems = [
         {'title': 'Manotick', 'lat': 45.2122679, 'lang': -75.7497449, 'icon': '', anchor: [0,0] },
 ];
 
-function initMap() {
+function initGoogleMap() {
 		let mapCentre = {lat: 45.1024307, lng: -75.5635001};
         let map = new google.maps.Map(document.getElementById('googleMap'), {
           zoom: 11,
@@ -229,6 +229,35 @@ function initMap() {
 				icon: icon,			
 			  });
 		}
+}
+
+function initMapButtons() {
+    const btns = document.querySelectorAll('.map__controls--btn');
+    btns.forEach(btn => btn.addEventListener('click', (e) => {
+        const selectedCategory = btn.getAttribute('data-category');
+
+        const selectedBtn = document.querySelector(`.map__controls--btn[data-category='${selectedCategory}']`);
+        const selectedLegend = document.querySelector(`.map__legend[data-category='${selectedCategory}']`);
+        const isActive = btn.classList.contains('active');
+
+        if (!isActive) {
+            const activeBtn = document.querySelector('.map__controls--btn.active');
+            const activeLegend = document.querySelector('.map__legend.active');
+
+            activeBtn.classList.remove('active');
+            activeLegend.classList.remove('active');
+
+            selectedBtn.classList.add('active');
+            selectedLegend.classList.add('active');
+        }
+    }));
+}
+
+const activeCategory = 'restaurants';
+
+function initMap() {
+    initMapButtons();
+    // initGoogleMap();
 }
 
 export default initMap;

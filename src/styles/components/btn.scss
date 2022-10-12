@@ -54,6 +54,14 @@ button {
             border-radius: 50%;
             background: $c-gold;
             margin-left: -3px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            path {
+                fill: $c-white;
+            }
         }
 
         &.active {
@@ -62,6 +70,10 @@ button {
 
             .btn-icon__img {
                 background: $c-white;
+
+                path {
+                    fill: $c-gold;
+                }
             }
         }
 
@@ -73,6 +85,10 @@ button {
             .btn-icon__img {
                 background: $c-white;
                 transition: background 0.2s ease-in-out;
+
+                path {
+                    fill: $c-gold;
+                }
             }
         }
     }

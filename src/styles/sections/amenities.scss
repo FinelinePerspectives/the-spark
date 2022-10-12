@@ -101,7 +101,6 @@
         margin-top: -100px;
         z-index: 2;    
 
-        
         @include breakpointDown($bp-mobile-lg) {
             display: none;
         }
