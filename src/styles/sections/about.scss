@@ -1,0 +1,50 @@
+.about {
+    background: $c-dark-brown;
+    color: $c-white;
+
+    &__content {
+        display: flex;
+        flex-flow: row nowrap;
+        column-gap: 60px;
+        row-gap: 50px;
+
+        @include breakpointDown($bp-tablet-md) {
+            column-gap: 40px;
+        }
+
+        @include breakpointDown($bp-mobile-md) {
+            flex-flow: column nowrap;
+        }
+    }
+
+    &__col {
+        flex: 1 0 48%;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: start;
+
+        h2 {
+            br {
+                @include breakpointDown($bp-desktop-sm) {
+                    display: none;
+                }
+            }
+        }
+
+        &:nth-of-type(1) {
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: contain;
+                object-position: center;
+
+                // @include breakpointDown($bp-mobile-md) {
+                //     max-width: 430px;
+                //     margin: auto;
+                // }
+            }
+        }
+    }
+}

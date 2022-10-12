@@ -4,9 +4,6 @@ button {
     border: none;
     font-family: inherit;
     border-radius: 50px;
-    border: 2px solid $c-gold;
-    padding: 10px 25px;
-    box-sizing: border-box;
     display: inline-flex;
 }
 
@@ -15,11 +12,34 @@ button {
     background: $c-gold;
     color: $c-white;
     transition: all 0.2s ease-in-out;
+    border: 2px solid $c-gold;
+    padding: 10px 25px;
+    box-sizing: border-box;
+    display: inline-flex;
+    border-radius: 50px;
 
     &:hover {
         background: $c-white;
         color: $c-gold;
         transition: all 0.2s ease-in-out;
+    }
+
+    &-arrow {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        column-gap: 10px;
+
+        path {
+            fill: $c-white;
+
+        }
+        &:hover {
+            path {
+                fill: $c-gold;
+            }
+        }
     }
 
     &-outline {
