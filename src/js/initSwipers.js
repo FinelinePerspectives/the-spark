@@ -60,14 +60,6 @@ function initSwipers() {
     modules: [Navigation, Pagination],
     centeredSlides: true,
     centerMode: true,
-    breakpoints: {
-      1100: {
-        enabled: false,
-        loop: false,
-        centeredSlides: false,
-        slidesPerView: 3,
-      }
-    }
   });
 }
 
