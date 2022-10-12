@@ -21,13 +21,12 @@
         flex-flow: row nowrap;
         justify-content: space-between;
         align-items: center;
+        column-gap: 10px;
 
         font-size: 20px;
         line-height: 14px;
 
         padding: 25px 50px;
-
-        column-gap: 10px;
 
         @include breakpointDown($bp-tablet-md) {
             padding: 25px;
@@ -37,6 +36,14 @@
             flex-flow: row wrap;
             padding: 0;
             column-gap: 0;
+            font-size: 14px;
+            
+            .btn {
+                p {
+                    font-size: 14px;
+                }
+                padding: 5px 10px;
+            }
         }
 
         &--col {
