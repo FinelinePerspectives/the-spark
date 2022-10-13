@@ -96,6 +96,10 @@
     column-gap: 10px;
     row-gap: 10px;
 
+    @include breakpointDown($bp-mobile-lg) {
+        row-gap: 5px;
+    }
+
 
     &__container {
         background: $c-dark-brown;
@@ -103,6 +107,10 @@
         position: relative;
         padding: 25px;
         min-width: 500px;
+
+        p {
+            margin: 0;
+        }
 
         @include breakpointDown($bp-mobile-lg) {
             min-width: unset;
@@ -124,6 +132,10 @@
         &--50 {
             height: 70px;
             flex: 1 0 48%;
+
+            @include breakpointDown($bp-tablet-sm) {
+                height: 50px;
+            }
         }
 
         &--100 {
@@ -177,6 +189,12 @@
 
         &--copy {
             flex-shrink: 1;
+
+            p {
+                @include breakpointDown($bp-mobile-lg) {
+                    font-size: 10px;
+                }
+            }
         }
     }
 
@@ -192,9 +210,18 @@
         border-bottom: 2px solid $c-white;
         color: $c-white;
 
+        @include breakpointDown($bp-tablet-sm) {
+            padding: 0 10px;
+            font-size: 14px;
+        }
+
         &::placeholder {
             color: $c-white;
             font-size: inherit;
+
+            @include breakpointDown($bp-tablet-sm) {
+                font-size: 14px;
+            }
         }
     }
 
@@ -211,9 +238,17 @@
         border-bottom: 2px solid $c-white;
         resize: none;
 
+        @include breakpointDown($bp-tablet-sm) {
+            font-size: 14px;
+        }
+
         &::placeholder {
             color: $c-white;
             font-size: inherit;
+
+            @include breakpointDown($bp-tablet-sm) {
+                font-size: 14px;;
+            }
         }
     }
 
