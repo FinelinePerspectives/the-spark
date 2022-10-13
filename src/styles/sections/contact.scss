@@ -1,0 +1,225 @@
+.contact {
+    background: $c-light-brown;
+    color: $c-white;
+
+    display: flex;
+    flex-flow: row nowrap;
+
+    min-height: 765px;
+    position: relative;
+
+    @include breakpointDown($bp-tablet-md) {
+        min-height: 741px;  
+    }
+
+    @include breakpointDown($bp-mobile-lg) {
+        flex-flow: column nowrap;
+        height: unset;  
+    }
+
+    .contentWrapper {
+        z-index: 2;
+    }
+
+
+    &__bg {
+        background: url('../assets/images/img-contact-2560.jpg');
+        background-size: cover;
+        background-position: top left;
+        background-repeat: no-repeat;
+        flex: 0 0 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: calc(50% + 35px);
+        z-index: 1;
+
+
+        @include breakpointDown($bp-tablet-md) {
+            background: url('../assets/images/img-contact-1280.jpg');
+            background-size: cover;
+            background-position: top left;
+            background-repeat: no-repeat;    
+        }
+
+        @include breakpointDown($bp-mobile-lg) {
+            display: none;
+        }
+
+        &--mobile {
+            display: none;
+            height: 478px;
+            width: 100%;
+
+            @include breakpointDown($bp-mobile-lg) {
+                display: block;
+                background: url('../assets/images/img-contact-1280.jpg');
+                background-size: cover;
+                background-position: top left;
+                background-repeat: no-repeat;    
+            }
+    
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-flow: row nowrap;
+
+        @include breakpointDown($bp-mobile-lg) {
+            flex-flow: column nowrap;
+        }    
+    }
+
+    &__col {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex: 1 0 48%;
+
+        &:nth-of-type(1) {
+            flex-shrink: 1;
+        }
+
+        @include breakpointDown($bp-mobile-lg) {
+            flex: 1 0 100%;
+        }  
+    }
+}
+
+.form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 10px;
+
+
+    &__container {
+        background: $c-dark-brown;
+        color: $c-white;
+        position: relative;
+        padding: 25px;
+        min-width: 500px;
+
+        @include breakpointDown($bp-mobile-lg) {
+            min-width: unset;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: -25px;
+            right: -25px;
+            border: 2px solid $c-white;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+    }
+
+    &__col {
+        &--50 {
+            height: 70px;
+            flex: 1 0 48%;
+        }
+
+        &--100 {
+            flex: 1 0 100%;
+        }
+    }
+
+
+    &__response {
+        opacity: 0;
+        transition: opacity 0.2s ease-in-out;
+        text-align: center;
+        margin: 0 0 10px 0;
+        height: 30px;
+
+        &.active {
+            opacity: 1;
+            transition: opacity 0.2s ease-in-out;
+        }
+    }
+
+    .input-error {
+        border-bottom: 2px solid red;
+
+        &::placeholder {
+            color: red;
+        }
+    }
+
+    &__consent {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        column-gap: 10px;
+
+        &--input {
+            height: 25px;
+            width: 25px;
+
+            input {
+                height: 100%;
+                width: 100%;
+
+                &:checked {
+                    fill: $c-gold;
+                    background: $c-gold;
+                }
+            }
+        }
+
+        &--copy {
+            flex-shrink: 1;
+        }
+    }
+
+    input {
+        padding: 0 25px;
+        height: 100%;
+        width: 100%;
+        font-size: inherit;
+        font-family: 'Poppins Regular', sans-serif;
+        background: transparent;
+        outline: none;
+        border: 0px;
+        border-bottom: 2px solid $c-white;
+        color: $c-white;
+
+        &::placeholder {
+            color: $c-white;
+            font-size: inherit;
+        }
+    }
+
+    textarea {
+        padding: 25px;
+        height: 100%;
+        width: 100%;
+        font-size: inherit;
+        font-family: 'Poppins Regular', sans-serif;
+        color: $c-white;
+        background: transparent;
+        outline: none;
+        border: 0px;
+        border-bottom: 2px solid $c-white;
+        resize: none;
+
+        &::placeholder {
+            color: $c-white;
+            font-size: inherit;
+        }
+    }
+
+    .btn {
+        display: flex;
+        flex: 1 0 100%;
+    }
+
+}
