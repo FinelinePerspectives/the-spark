@@ -8,6 +8,12 @@
         justify-content: center;
         align-items: center;
         column-gap: 25px;
+        margin-top: -200px;
+
+        @include breakpointDown(1200px) {
+            margin-top: -150px;
+            ;
+        }
 
         @include breakpointDown(1000px) {
             display: none;
@@ -31,12 +37,16 @@
     }
 
     &__card {      
-        width: 328px;
+        width: 373px;
         height: 328px;
 
         @include breakpointDown(1200px) {
             width: 300px;
             height: 300px;
+        }
+
+        @include breakpointDown(1000px) {
+            width: 373px;
         }
 
         &.spaceTop {
@@ -51,10 +61,14 @@
             align-items: center;
 
             position: relative;
-            width: 328px;
+            width: 373px;
 
             @include breakpointDown(1200px) {
                 width: 300px;
+            }
+
+            @include breakpointDown(1000px) {
+                width: 373px;
             }
 
             img {
@@ -72,7 +86,7 @@
 
             position: absolute;
             bottom: 0;
-            left: 33%;
+            left: 35%;
             z-index: 2;
             height: 110px;
             width: 110px;
@@ -83,7 +97,14 @@
 
             @include breakpointDown(1200px) {
                 height: 100px;
-                width: 100px;    
+                width: 100px;
+                left: 33%;
+            }
+
+            @include breakpointDown(1000px) {
+                height: 110px;
+                width: 110px;
+                left: 35%;
             }
 
 
@@ -103,6 +124,11 @@
                 @include breakpointDown(1200px) {
                     height: 80px;
                     width: 80px;    
+                }
+
+                @include breakpointDown(1000px) {
+                    height: 90px;
+                    width: 90px;    
                 }
     
 
@@ -137,6 +163,7 @@
         padding: 110px 0 0 0;
         overflow: hidden;
         position: relative;
+        margin-top: -200px;
 
         @include breakpointDown(1000px) {
             display: block;
@@ -147,11 +174,7 @@
         }
 
         .swiper-slide {
-            min-width: 328px;
-
-            @include breakpointDown(1300px) {
-                max-width: 300px;
-            }
+            width: 373px;
 
             @include breakpointDown(1100px) {
                 opacity: 0;
