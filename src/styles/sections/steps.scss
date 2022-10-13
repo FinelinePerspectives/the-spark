@@ -39,6 +39,10 @@
         width: 373px;
         height: 328px;
 
+        p {
+            margin: 0;
+        }
+
         @include breakpointDown(1200px) {
             width: 300px;
             height: 300px;
@@ -69,6 +73,10 @@
 
             @include breakpointDown(1000px) {
                 width: 373px;
+            }
+
+            p {
+                margin:0;
             }
 
             img {
@@ -116,6 +124,7 @@
                 width: 90px;
                 backdrop-filter: blur(3px);
                 font-size: 33px;
+                margin: 0;
 
                 display: flex;
                 justify-content: center;

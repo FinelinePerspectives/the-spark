@@ -40,6 +40,8 @@
     }
 
     h2 {
+        margin: 0;
+        
         &:nth-of-type(1) {
             color: $c-black-1;
         }

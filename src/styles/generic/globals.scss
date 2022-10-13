@@ -2,11 +2,15 @@ h1 {
     font-family: 'Poppins Semi Bold', sans-serif;
     font-size: 52px;
     line-height: 61px;
-    margin: 0;
+    margin-bottom: 35px;
 
     @include breakpointDown($bp-tablet-md) {
         font-size: 40px;
         line-height: 48px;
+    }
+
+    @include breakpointDown($bp-mobile-lg) {
+        margin-bottom: 25px;
     }
 }
 
@@ -14,11 +18,15 @@ h2 {
     font-family: 'Poppins Semi Bold', sans-serif;
     font-size: 46px;
     line-height: 58px;
-    margin: 0;
+    margin-bottom: 35px;
 
     @include breakpointDown($bp-tablet-md) {
         font-size: 30px;
         line-height: 36px;
+    }
+
+    @include breakpointDown($bp-mobile-lg) {
+        margin-bottom: 25px;
     }
 }
 
@@ -26,11 +34,15 @@ p {
     font-family: 'Poppins Regular', sans-serif;
     font-size: 20px;
     line-height: 30px;
-    margin: 0;
+    margin-bottom: 35px;
 
     @include breakpointDown($bp-tablet-md) {
         font-size: 16px;
         line-height: 26px;
+    }
+
+    @include breakpointDown($bp-mobile-lg) {
+        margin-bottom: 25px;
     }
 
     &.bold {
