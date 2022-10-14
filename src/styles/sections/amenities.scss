@@ -97,6 +97,10 @@
 .amenitiesCards {
     color: $c-dark-brown;  
 
+    @include breakpointDown($bp-mobile-md) {
+        padding: 0 10px;
+    }
+
     &__container {
         display: flex;
         flex-flow: row wrap;
