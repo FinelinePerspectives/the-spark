@@ -22,7 +22,7 @@ body {
 
 }
 
-header, section, footer {
+.sectionPadding {
     padding: 0 80px;
 
     @include breakpointDown($bp-mobile-lg) {
