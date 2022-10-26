@@ -22,6 +22,11 @@
             font-size: 46px;
             line-height: 58px;
         }
+
+        @include breakpointDown($bp-mobile-md) {
+            font-size: 30px;
+            line-height: 36px;
+         }
     }
 
     &__wrapper {
@@ -51,6 +56,15 @@
             grid-row-gap: 0;    
             margin-top: 50px;  
         }
+
+        @include breakpointDown(600px) {
+            grid-template-columns: 40% 60%;  
+        }
+
+        @include breakpointDown(425px) {
+            grid-template-columns: repeat(2, 1fr);  
+            margin-top: 0;
+        }
     }
 
     &__image {
@@ -67,6 +81,15 @@
         @include breakpointDown($bp-tablet-sm) {
             top: -5%;
             left: 45%;
+        }
+
+        @include breakpointDown(600px) {
+            height: 150px;
+            width: 150px; 
+        }
+
+        @include breakpointDown(425px) {
+            display: none;
         }
     }
 

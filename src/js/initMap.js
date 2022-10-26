@@ -233,22 +233,27 @@ function initGoogleMap() {
 
 function initMapButtons() {
     const btns = document.querySelectorAll('.map__controls--btn');
+
     btns.forEach(btn => btn.addEventListener('click', (e) => {
         const selectedCategory = btn.getAttribute('data-category');
 
         const selectedBtn = document.querySelector(`.map__controls--btn[data-category='${selectedCategory}']`);
         const selectedLegend = document.querySelector(`.map__legend[data-category='${selectedCategory}']`);
+        const selectedMapSwiper = document.querySelector(`.map__swiper[data-category='${selectedCategory}']`);
         const isActive = btn.classList.contains('active');
 
         if (!isActive) {
             const activeBtn = document.querySelector('.map__controls--btn.active');
             const activeLegend = document.querySelector('.map__legend.active');
+            const activeMapSwiper = document.querySelector('.map__swiper.active');
 
             activeBtn.classList.remove('active');
             activeLegend.classList.remove('active');
+            activeMapSwiper.classList.remove('active');
 
             selectedBtn.classList.add('active');
             selectedLegend.classList.add('active');
+            selectedMapSwiper.classList.add('active');
         }
     }));
 }
