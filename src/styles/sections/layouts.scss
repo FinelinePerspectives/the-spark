@@ -1,6 +1,7 @@
 .layouts {
     background: $c-white;
     color: $c-dark-brown;
+    position: relative;
 
     &__container {
         display: flex;

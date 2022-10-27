@@ -78,3 +78,33 @@ body {
         max-width: 1560px;
     }
 }
+
+.star__bg {
+        &-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            @include breakpointDown($bp-desktop-md) {
+                width: 200px;
+            }
+
+            @include breakpointDown(1600px) {
+                display: none;
+            }
+        }
+
+        &-bottom {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+
+            @include breakpointDown($bp-desktop-md) {
+                width: 200px;
+            }
+
+            @include breakpointDown(1600px) {
+                display: none;
+            }
+        }
+    }
