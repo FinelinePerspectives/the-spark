@@ -66,19 +66,6 @@ body {
     color: $c-light-brown;
 }
 
-.footer {
-    background: $c-white;
-    color: $c-dark-brown;
-
-    .contentWrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    
-        max-width: 1560px;
-    }
-}
-
 .star__bg {
         &-top {
             position: absolute;

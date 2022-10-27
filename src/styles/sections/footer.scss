@@ -1,0 +1,72 @@
+.footer {
+    background: $c-white;
+    color: $c-dark-brown;
+
+    .contentWrapper {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+    
+        max-width: 1565px;
+        padding: 20px 60px;
+        row-gap: 25px;
+
+        @include breakpointDown($bp-tablet-sm) {
+            padding: 20px;
+        }
+
+        @include breakpointDown($bp-mobile-lg) {
+            flex-flow: column nowrap;
+        }
+    }
+
+    p {
+        margin: 0;
+    }
+
+    &__utility {
+        display: flex;
+        flex-flow: column nowrap;
+        text-align: center;
+    }
+
+    &__links {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        column-gap: 25px;
+    }
+
+    i {
+        transition: color 0.2s ease-in-out;
+
+        &:hover {
+            color: $c-gold;
+            transition: color 0.2s ease-in-out;
+        }
+    }
+
+    &__links {
+        &--desktop {
+            display: block;
+
+            @include breakpointDown($bp-tablet-md) {
+                display: none;
+            }
+        }
+
+        &--mobile {
+            display: none;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+            column-gap: 25px;    
+            margin-bottom: 15px;
+
+            @include breakpointDown($bp-tablet-md) {
+                display: flex;
+            }
+        }
+    }
+}
