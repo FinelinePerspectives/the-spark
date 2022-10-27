@@ -14,11 +14,15 @@ body {
     color: $c-white;
 }
 
+.noscroll {
+    overflow-y: hidden;
+}
 
 .container {
     background: $c-white;
     max-width: 2560px;
     margin: auto;
+    position: relative;
 
 }
 
@@ -43,27 +47,12 @@ body {
     }
 }
 
-.nav {
-    .contentWrapper {
-        padding-left: 165px;
-        max-width: 2062px;
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
+.navMargin {
+    margin-top: 100px;
 
-        @include breakpointDown($bp-desktop-sm) {
-            padding: 0 35px;
-        }
-
-        img {
-            width: 338px;
-        }
+    @include breakpointDown($bp-tablet-sm) {
+        margin-top: 0;
     }
-}
-
-.navSecondary {
-    background: $c-white;
-    color: $c-light-brown;
 }
 
 .star__bg {

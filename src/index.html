@@ -28,14 +28,40 @@
     />
   </head>
   <body>
-    <main class="container">
+    <main class="container" id="top">
+      <div class="navMobile__overlay"></div>
       <%= require('html-loader!./partials/nav.html').default %>
       <!--  -->
       <%= require('html-loader!./partials/hero.html').default %>
       <!--  -->
     
       <section id="navSecondary" class="navSecondary">
-        <div class="contentWrapper">Nav Secondary</div>
+        <ul class="nav__items" id="onePageNav">
+          <li class="onePageNav__reset">
+            <a href="#timeline"></a>
+          </li>
+          <li>
+            <a href="#layouts">
+              <p>Layouts</p>
+            </a>
+          </li>
+          
+          <li><a href="#amenities">
+            <p>Amenities</p>
+          </a></li>
+          
+          <li>
+            <a href="#location">
+              <p>Location</p>
+            </a>
+          </li>
+          
+          <li>
+            <a href="#contact">
+              <p>Contact</p>
+            </a>
+          </li>
+        </ul>
       </section>
     
       <%= require('html-loader!./partials/timeline.html').default %>

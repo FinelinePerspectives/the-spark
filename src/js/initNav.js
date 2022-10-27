@@ -1,30 +1,63 @@
 function initNav() {
-    const mobileNavToggle = document.querySelector('.nav__toggle');
-    const mobileNavContent = document.querySelector('.nav__content--mobile');
-    const navCloseTriggers = document.querySelectorAll('.nav__close');
+    const body = document.querySelector('body');
+    const navWrapper = document.querySelector('#navWrapper');
+    const navSecondary = document.querySelector('#navSecondary');
+    const navToggle = document.querySelector('#navToggle');
+    const navMobile = document.querySelector('.navMobile');
+    const navMobileOverlay = document.querySelector('.navMobile__overlay');
+    const navMobileItems = document.querySelectorAll('.navMobile__item');
 
-    function toggleMobileNav() {
-        if (mobileNavContent.classList.contains('active')) {
-            mobileNavToggle.classList.remove('active');
-            mobileNavContent.classList.add('navFadeOut');
-            setTimeout(() => {
-                mobileNavContent.classList.remove('active');
-                mobileNavContent.classList.remove('navFadeOut');
-            }, 150)
+    const desktopTrigger = document.querySelector('#hero').getBoundingClientRect().bottom  - 100;
+    const mobileTrigger = document.querySelector('.hero__bg--mobile').getBoundingClientRect().bottom;
+
+    function initNavSticky() {
+        let trigger = window.innerWidth <= 1024 ? mobileTrigger : desktopTrigger;
+
+        if (window.scrollY >= trigger) {
+            body.classList.add('navMargin');
+            navWrapper.classList.add('sticky');
+            navSecondary.classList.add('sticky');
         } else {
-            mobileNavToggle.classList.add('active')
-            mobileNavContent.classList.add('active')
+            body.classList.remove('navMargin');
+            navWrapper.classList.remove('sticky');
+            navSecondary.classList.remove('sticky');
         }
     }
 
-    mobileNavToggle.addEventListener('click', () => toggleMobileNav());
-    
-    window.addEventListener('resize', () => {
-        if (window.innerWidth >= 1280 && mobileNavContent.classList.contains('active')) {
-            toggleMobileNav();
+    window.addEventListener('scroll', () => initNavSticky());
+
+    function openMenu() {
+        body.classList.add('noscroll');
+        navWrapper.classList.add('mobileSticky');
+        navMobile.classList.add('active');
+        navToggle.classList.add('active');
+        navMobileOverlay.classList.add('active');
+    }
+
+    function closeMenu() {
+        body.classList.remove('noscroll');
+        navWrapper.classList.remove('mobileSticky');
+        navMobile.classList.remove('active');
+        navToggle.classList.remove('active');
+        navMobileOverlay.classList.remove('active');
+    }
+
+    function initNavMobile() {
+        if (navMobile.classList.contains('active')) {
+         closeMenu();
+        } else {
+            openMenu();
         }
-    });
-    navCloseTriggers.forEach(item => item.addEventListener('click', () => toggleMobileNav()));
+    }
+
+    navToggle.addEventListener('click', initNavMobile);
+    navMobileOverlay.addEventListener('click', closeMenu);
+    navMobileItems.forEach(item => {item.addEventListener('click', closeMenu)})
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) {
+            closeMenu();
+        }
+    })
 }
 
 export default initNav;

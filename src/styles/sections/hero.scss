@@ -9,6 +9,7 @@
 
     @include breakpointDown($bp-tablet-md) {
         min-height: 675px;
+        padding-top: 110px;
     }
 
 
@@ -16,9 +17,11 @@
         min-height: 550px;
     }
 
-    @include breakpointDown($bp-mobile-md) {
+    @include breakpointDown($bp-mobile-lg) {
         flex-flow: column nowrap;
-        min-height: unset;  
+        min-height: unset;
+        padding-bottom: 50px;
+        padding-top: 35px;
     }
 
     .contentWrapper {
@@ -49,11 +52,12 @@
             background: url('../assets/images/img-header-1280.jpg');
             background-size: cover;
             background-position: top left;
-            background-repeat: no-repeat;    
-            width: calc(60% + 35px);
+            background-repeat: no-repeat;  
+            width: calc(55% + 35px);
+  
         }
 
-        @include breakpointDown($bp-mobile-md) {
+        @include breakpointDown($bp-mobile-lg) {
             display: none;
         }
 
@@ -61,12 +65,16 @@
             display: none;
             background: url('../assets/images/img-header-1280.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: top;
             background-repeat: no-repeat; 
-            height: 435px;   
+            height: 600px;
+
+            @include breakpointDown($bp-mobile-lg) {
+                display: block; 
+            }
 
             @include breakpointDown($bp-mobile-md) {
-                display: block; 
+                height: 435px;   
             }
         }
     }
@@ -75,7 +83,7 @@
         display: flex;
         flex-flow: row nowrap;
 
-        @include breakpointDown($bp-mobile-md) {
+        @include breakpointDown($bp-mobile-lg) {
             flex-flow: column nowrap;
         }    
     }
@@ -87,7 +95,7 @@
         align-items: center;
         flex: 1 1 48%;
 
-        @include breakpointDown($bp-mobile-md) {
+        @include breakpointDown($bp-mobile-lg) {
             flex: 1 0 100%;
         }  
     }
@@ -112,11 +120,11 @@
             padding: 50px;
         }
 
-        @include breakpointDown($bp-mobile-md) {
+        @include breakpointDown($bp-mobile-lg) {
             min-width: unset;
         }  
 
-        @include breakpointDown($bp-mobile-md) {
+        @include breakpointDown($bp-mobile-lg) {
             padding: 25px;
         }
 
