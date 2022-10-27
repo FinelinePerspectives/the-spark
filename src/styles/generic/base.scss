@@ -84,3 +84,27 @@ body {
             }
         }
     }
+
+    .vrTour__container {
+            width: 1200px;
+            height: 800px;
+            display: none;
+
+            
+        }
+
+
+        .fslightbox-fade-in-strong {
+                height: 100% !important;
+                width: 100% !important;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+            iframe {
+                width: 1200px;
+                max-width: 90%;
+                height: 800px;
+                max-height: 85%;
+            }
+        }

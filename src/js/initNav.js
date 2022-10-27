@@ -24,7 +24,7 @@ function initNav() {
         }
     }
 
-    window.addEventListener('scroll', () => initNavSticky());
+    window.addEventListener('scroll', initNavSticky);
 
     function openMenu() {
         body.classList.add('noscroll');
@@ -57,7 +57,9 @@ function initNav() {
         if (window.innerWidth >= 1024) {
             closeMenu();
         }
-    })
+    });
+
+    initNavSticky();
 }
 
 export default initNav;
