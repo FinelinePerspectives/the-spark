@@ -23,10 +23,10 @@ body {
 }
 
 .sectionPadding {
-    padding: 0 80px;
+    padding: 80px;
 
     @include breakpointDown($bp-mobile-lg) {
-        padding: 0 35px;
+        padding: 35px;
     }
 }
 

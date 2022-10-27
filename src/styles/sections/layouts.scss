@@ -33,8 +33,12 @@
         justify-content: center;
         align-items: center;
         height: 320px;
+
         @include breakpointDown($bp-tablet-sm) {
             flex: unset;
+        }
+        @include breakpointDown($bp-mobile-md) {
+            height: 200px;
         }
     }
 
@@ -47,6 +51,7 @@
 
         @include breakpointDown($bp-tablet-sm) {
             flex-flow: column nowrap;
+            max-height: unset;
         }
     }
 
@@ -62,7 +67,7 @@
         display: none;
         position: relative;
         overflow: hidden;
-        padding: 0 10px;
+        padding: 0 35px 35px 35px;
         
         @include breakpointDown($bp-tablet-sm) {
             display: block;
@@ -73,6 +78,11 @@
             height: 300px;
             opacity: 0;
             transition: opacity 0.2s ease-in;
+
+            @include breakpointDown($bp-mobile-sm) {
+                width: 275px;
+                height: 275px;
+            }
 
             img {
                 height: 100%;

@@ -60,6 +60,7 @@
 .map {
     color: $c-dark-brown;
     position: relative;
+    padding-top: 0;
 
     @include breakpointDown($bp-tablet-sm) {
         padding: 0;
