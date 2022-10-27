@@ -47,9 +47,13 @@
 
         .swiper-slide {
             max-width: 70%;
-            width: 350px;
+            width: 300px;
             opacity: 0;
             transition: opacity 0.1s ease-in-out;
+
+            @include breakpointDown($bp-mobile-sm) {
+                width: 275px;
+            }
 
             &-active {
                 opacity: 1;
