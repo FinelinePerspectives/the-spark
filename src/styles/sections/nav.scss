@@ -49,9 +49,17 @@
                 .nav__logo--desktop {
                     display: block;
                     width: 246px;
+
+                    @include breakpointDown($bp-mobile-lg) {
+                        width: 200px;
+                    }
                 }
                 .nav__logo--mobile {
                     display: none;
+
+                    @include breakpointDown($bp-mobile-lg) {
+                        width: 200px;
+                    }
                 }
             }
         }
@@ -63,6 +71,10 @@
                 .nav__logo--desktop {
                     display: block;
                     width: 246px;
+
+                    @include breakpointDown($bp-mobile-lg) {
+                        width: 200px;
+                    }
                 }
                 .nav__logo--mobile {
                     display: none;
@@ -95,16 +107,24 @@
             @include breakpointDown($bp-mobile-lg) {
                 display: none;
             }
+
+            @include breakpointDown($bp-mobile-lg) {
+                width: 200px;
+            }
         }
 
         &--mobile {
             display: none;
+            width: 246px;
 
             @include breakpointDown($bp-mobile-lg) {
                 display: block;
             }
 
-            width: 246px;
+            @include breakpointDown($bp-mobile-lg) {
+                width: 200px;
+            }
+
         }
     }
 
