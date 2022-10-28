@@ -123,6 +123,16 @@ button {
         column-gap: 10px;
         flex: 1 0 30%;
 
+        @include breakpointDown($bp-mobile-md) {
+            flex: 1 0 48%;
+            max-width: 50%;
+        }
+
+        @include breakpointDown($bp-mobile-sm) {
+            flex: 1 0 100%;
+            max-width: 100%;
+        }
+
         path {
             fill: $c-gold;
         }

@@ -30,9 +30,13 @@
     &__content {
         display: flex;
         flex-flow: column nowrap;
-        // flex: 0 1 685px;
+        flex: 0 1 685px;
         height: 100%;
         row-gap: 25px;
+
+        @include breakpointDown($bp-tablet-sm) {
+            flex: unset;
+        }
     }
 
     &__controls {
@@ -45,6 +49,11 @@
 
         @include breakpointDown($bp-tablet-sm) {
             flex-flow: row wrap;
+        }
+
+        @include breakpointDown($bp-mobile-md) {
+            justify-content: flex-start;
+
         }
     }
 
@@ -61,7 +70,6 @@
         justify-content: flex-start;
         align-items: center;
         height: max-content;
-        // min-height: 515px;
         width: 100%;
 
         @include breakpointDown($bp-tablet-sm) {
