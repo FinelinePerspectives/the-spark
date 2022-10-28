@@ -8,7 +8,7 @@
     flex-flow: row nowrap;
 
     @include breakpointDown($bp-tablet-md) {
-        // min-height: 675px;
+        min-height: 675px;
         padding-top: 110px;
     }
 
