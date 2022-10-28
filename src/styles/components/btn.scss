@@ -122,6 +122,7 @@ button {
         align-items: center;
         column-gap: 10px;
         flex: 1 0 30%;
+        padding: 10px 15px;
 
         @include breakpointDown($bp-mobile-md) {
             flex: 1 0 48%;
