@@ -327,8 +327,6 @@ function initMapSwipers() {
         swiperContainer.appendChild(swiperWrapper);
         swiperContainer.appendChild(swiperPrev);
         swiperContainer.appendChild(swiperNext);
-
-        console.log(swiperContainer);
     })
 
     mapSwipers.forEach(swiper => {

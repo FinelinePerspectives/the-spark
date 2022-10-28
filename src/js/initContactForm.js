@@ -1,24 +1,35 @@
 const url = 'http://192.99.46.183/~thespark/php/contact_me.php';
 
-const submitBtn = document.querySelector('#submitBtn');
-const formResponse = document.querySelector('.form__response');
+const submitBtnContact = document.querySelector('#submitBtnContact');
+const submitBtnPopup = document.querySelector('#submitBtnPopup');
 const formInputs = document.querySelectorAll('.form-input');
 
 function initContactForm() {
-    submitBtn.addEventListener('click', (e) => {
+    submitBtnContact.addEventListener('click', (e) => {
         e.preventDefault();
-        submitContactForm();
+        submitContactForm('Contact');
     });
+
+    submitBtnPopup.addEventListener('click', (e) => {
+        e.preventDefault();
+        submitContactForm('Popup');
+    });
+
     formInputs.forEach(input => input.addEventListener('input', () => {
         input.classList.remove('input-error');
-        formResponse.classList.remove('active');
-        formResponse.textContent = "";
-    }));
+        const formResponseContact = document.querySelector(`.formResponseContact`);
+        const formResponsePopup = document.querySelector(`.formResponsePopup`);
 
+        formResponseContact.classList.remove('active');
+        formResponseContact.textContent = "";
+
+        formResponsePopup.classList.remove('active');
+        formResponsePopup.textContent = "";
+    }));
 }
 
 
-function postForm(data) {        
+function postForm(data, formResponse) {        
     $.post(url, data, function (data) {
         formResponse.textContent = 'Thank you! We will be in touch shortly.'
         formResponse.classList.add('active');
@@ -32,19 +43,19 @@ function postForm(data) {
     }).fail(err => {
         formResponse.textContent = 'Something went wrong...'
         formResponse.classList.add('active');
-        console.log(err);
     });
 }
 
-function submitContactForm() {
+function submitContactForm(id) {
     let formValid = true;
+    const formResponse = document.querySelector(`.formResponse${id}`);
 
-    const userFirstName = document.querySelector(".form-input[name='firstName']");
-    const userLastName = document.querySelector(".form-input[name='lastName']");
-    const userEmail = document.querySelector(".form-input[name='email']");
-    const userPhone = document.querySelector(".form-input[name='phoneNumber']");
-    const userMessage = document.querySelector(".form-input[name='message']");
-    const userConsent = document.querySelector('#consent').checked;
+    const userFirstName = document.querySelector(`.form-input[name='firstName${id}']`);
+    const userLastName = document.querySelector(`.form-input[name='lastName${id}']`);
+    const userEmail = document.querySelector(`.form-input[name='email${id}']`);
+    const userPhone = document.querySelector(`.form-input[name='phoneNumber${id}']`);
+    const userMessage = document.querySelector(`.form-input[name='message${id}']`);
+    const userConsent = document.querySelector(`.consent${id}`).checked;
 
     const requiredFields = [userFirstName, userLastName, userEmail, userPhone, userMessage];
 
@@ -74,7 +85,15 @@ function submitContactForm() {
             userMessage: userMessage.value
         }
 
-        postForm(formData);
+        postForm(formData, formResponse);
+
+        if (id === 'Popup') {
+            const closePopup = document.querySelector('.registerPopup__close');
+
+            setTimeout(() => {
+                closePopup.click();
+            }, 2500)
+        }
     }
 }
 

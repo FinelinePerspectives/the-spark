@@ -34,7 +34,7 @@
       <!--  -->
       <%= require('html-loader!./partials/hero.html').default %>
       <!--  -->
-    
+
       <section id="navSecondary" class="navSecondary">
         <ul class="nav__items" id="onePageNav">
           <li class="onePageNav__reset">
@@ -45,17 +45,19 @@
               <p>Layouts</p>
             </a>
           </li>
-          
-          <li><a href="#amenities">
-            <p>Amenities</p>
-          </a></li>
-          
+
+          <li>
+            <a href="#amenities">
+              <p>Amenities</p>
+            </a>
+          </li>
+
           <li>
             <a href="#location">
               <p>Location</p>
             </a>
           </li>
-          
+
           <li>
             <a href="#contact">
               <p>Contact</p>
@@ -63,7 +65,7 @@
           </li>
         </ul>
       </section>
-    
+
       <%= require('html-loader!./partials/timeline.html').default %>
       <!--  -->
       <%= require('html-loader!./partials/layouts.html').default %>
@@ -89,7 +91,15 @@
     </main>
 
     <section class="vrTour__container">
-      <iframe src="https://finelinevirtualtours.com/2155/Suite02/" id="vrTour" frameBorder="0" data-class="vrTour__iframe"></iframe>   
+      <iframe
+        src="https://finelinevirtualtours.com/2155/Suite02/"
+        id="vrTour"
+        frameborder="0"
+        data-class="vrTour__iframe"
+      ></iframe>
     </section>
+
+    <%= require('html-loader!./partials/registerPopup.html').default %>
+    <!--  -->
   </body>
 </html>

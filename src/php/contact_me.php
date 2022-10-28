@@ -12,9 +12,9 @@
 	$userPhone = filter_var($_POST["userPhone"], FILTER_SANITIZE_STRING);
 	$userMessage = filter_var($_POST["userMessage"], FILTER_SANITIZE_STRING);
 	
-	$mail->addAddress('rpeterson@finelineperspectives.com', 'Zanutta Construction');
+	$mail->addAddress('rpeterson@finelineperspectives.com', 'The Spark');
 	$mail->addBCC('rpeterson@finelineperspectives.com', 'Ryan Peterson');
-	$mail->setFrom('rpeterson@finelineperspectives.com', 'Zanutta Construction');
+	$mail->setFrom('rpeterson@finelineperspectives.com', 'The Spark');
 
 	$email_body =	
 	'

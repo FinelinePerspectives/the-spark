@@ -12,17 +12,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 5;
+    z-index: 20;
   }
   
   .modal__container {
     background-color: #fff;
-    padding: 30px;
-    max-width: 500px;
-    max-height: 100vh;
-    border-radius: 4px;
+    padding: 0;
+    width: 1400px;
+    max-width: 90vw;
+    height: 900px;
+    min-height: 900px;
+    max-height: 95vh;
+    border-radius: 0;
     overflow-y: auto;
     box-sizing: border-box;
+
+    @include breakpointDown($bp-tablet-sm) {
+      max-width: 90vw;
+      width: 700px;
+    }
+
+    @include breakpointDown($bp-mobile-md) {
+      min-height: unset;
+      height: unset;
+  }
   }
   
   .modal__header {

@@ -1,0 +1,121 @@
+.registerPopup {
+    &__container {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        background: $c-dark-brown !important;
+        height: 100% !important;
+        width: 100% !important;
+        color: $c-white;
+
+        @include breakpointDown($bp-tablet-sm) {
+            flex-flow: column nowrap;
+        }
+
+    }
+
+    &__close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        height: 75px;
+        width: 75px;
+
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    &__image {
+        background: url('../assets/images/img-popup-lg.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        flex: 1 0 48%;
+        height: 100%;
+        width: 100%;
+
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        padding: 35px 60px;
+        
+        h2 {
+            margin: 0;
+        }
+
+        @include breakpointDown($bp-tablet-sm) {
+            background: url('../assets/images/img-popup-sm.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex: 1 1 20%;
+            min-height: 200px;
+            max-height: 300px;
+
+            h2 {
+                width: 190px;
+            }
+        }
+
+        @include breakpointDown($bp-mobile-md) {
+            background: none;
+            padding: 20px;
+            min-height: unset;
+            height: unset;
+            flex: unset;
+        }
+    }
+
+    &__content {
+        flex: 1 0 48%;
+        height: 100%;
+        padding: 85px 60px;
+
+        ul {
+            margin-left: 15px;
+
+            p {
+                margin: 0;
+            }
+        }
+
+        p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        input::placeholder, textarea::placeholder {
+            font-size: 16px;
+        }
+
+        @include breakpointDown($bp-tablet-sm) {
+            padding: 35px;
+
+            p {
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
+
+            input::placeholder, textarea::placeholder {
+                font-size: 12px;
+            }
+        }
+
+        @include breakpointDown($bp-mobile-md) {
+            padding: 20px;
+        }
+
+        .form__consent--copy {
+           p {
+            font-size: 12px;
+           }
+        }
+    }
+}
