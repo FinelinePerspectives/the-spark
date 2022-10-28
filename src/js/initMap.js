@@ -3,9 +3,7 @@ import Swiper, { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-const mapItems = [
-        {'title': 'Manotick', 'lat': 45.2122679, 'lang': -75.7497449, 'icon': '', anchor: [0,0] },
-];
+import mapItems from './mapItems';
 
 function initGoogleMap() {
 		let mapCentre = {lat: 45.1024307, lng: -75.5635001};
@@ -262,19 +260,85 @@ function initMapButtons() {
     }));
 }
 
-const activeCategory = 'restaurants';
-
 function initMapSwipers() {
-    const mapSwipers = ['.restaurants__swiper', '.shopping__swiper'];
+    const mapSwipers = ['restaurants', 'shopping', 'lifestyle', 'parks', 'transit'];
 
     mapSwipers.forEach(swiper => {
-        return new Swiper(`${swiper}`, {
+        const swiperContainer = document.querySelector(`.${swiper}__swiper`);
+
+        const swiperWrapper = document.createElement('div');
+        swiperWrapper.classList.add('swiper-wrapper');
+
+        let slides = '';
+        const items = mapItems.filter(cat => cat.name === swiper)[0].items;
+        items.forEach(item => {
+            const slide =
+            `<div class="swiper-slide">
+              <div class="mapCard">
+                <div class="mapCard__header">
+                  <p>${item.title}</p>
+                </div>
+
+                <a href="https://maps.google.ca/?q=${item.coords.lat},${item.coords.lng}" target="_blank">
+                    <div class="mapCard__image">
+                        <img src="${item.image}" alt="${item.title}" />
+                    </div>
+                </a>
+
+                <div class="mapCard__info">
+                  <div class="mapCard__time" data-transportation="walk">
+                    <div
+                      class="mapCard__time--icon"
+                      data-transportation="walk"
+                    ></div>
+                    <span>${item.walkTime}min</span>
+                  </div>
+                  <div class="mapCard__time" data-transportation="bike">
+                    <div
+                      class="mapCard__time--icon"
+                      data-transportation="bike"
+                    ></div>
+                    <span>${item.bikeTime}min</span>
+                  </div>
+                  <div class="mapCard__time" data-transportation="car">
+                    <div
+                      class="mapCard__time--icon"
+                      data-transportation="car"
+                    ></div>
+                    <span>${item.driveTime}min</span>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+
+            slides += slide;
+        });
+
+        swiperWrapper.innerHTML = slides;
+
+        const swiperPrev = document.createElement('div');
+        swiperPrev.classList.add('map__swiper-prev');
+        swiperPrev.classList.add(`${swiper}__swiper-prev`);
+
+        const swiperNext = document.createElement('div');
+        swiperNext.classList.add('map__swiper-next');
+        swiperNext.classList.add(`${swiper}__swiper-next`);
+        
+        swiperContainer.appendChild(swiperWrapper);
+        swiperContainer.appendChild(swiperPrev);
+        swiperContainer.appendChild(swiperNext);
+
+        console.log(swiperContainer);
+    })
+
+    mapSwipers.forEach(swiper => {
+        return new Swiper(`.${swiper}__swiper`, {
             slidesPerView: "auto",
             spaceBetween: 10,
             loop: true,
             navigation: {
-              nextEl: `${swiper}-next`,
-              prevEl: `${swiper}-prev`,
+              nextEl: `.${swiper}__swiper-next`,
+              prevEl: `.${swiper}__swiper-prev`,
             },
             modules: [Navigation],
             centeredSlides: true,
