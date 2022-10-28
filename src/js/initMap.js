@@ -1,3 +1,7 @@
+import Swiper, { Navigation } from 'swiper';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 const mapItems = [
         {'title': 'Manotick', 'lat': 45.2122679, 'lang': -75.7497449, 'icon': '', anchor: [0,0] },
@@ -260,9 +264,29 @@ function initMapButtons() {
 
 const activeCategory = 'restaurants';
 
+function initMapSwipers() {
+    const mapSwipers = ['.restaurants__swiper', '.shopping__swiper'];
+
+    mapSwipers.forEach(swiper => {
+        return new Swiper(`${swiper}`, {
+            slidesPerView: "auto",
+            spaceBetween: 10,
+            loop: true,
+            navigation: {
+              nextEl: `${swiper}-next`,
+              prevEl: `${swiper}-prev`,
+            },
+            modules: [Navigation],
+            centeredSlides: true,
+            centerMode: true,
+          });
+    });
+}
+
 function initMap() {
     initMapButtons();
     // initGoogleMap();
+    initMapSwipers();
 }
 
 export default initMap;
