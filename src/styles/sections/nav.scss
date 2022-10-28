@@ -248,6 +248,7 @@
     width: 100%;
     background: $c-dark-brown;
     position: relative;
+    max-height: 80vh;
 
     @include breakpointDown($bp-tablet-sm) {
         display: none;

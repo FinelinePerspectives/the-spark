@@ -8,14 +8,14 @@
     flex-flow: row nowrap;
 
     @include breakpointDown($bp-tablet-md) {
-        min-height: 675px;
+        // min-height: 675px;
         padding-top: 110px;
     }
 
 
-    @include breakpointDown($bp-tablet-sm) {
-        min-height: 550px;
-    }
+    // @include breakpointDown($bp-tablet-sm) {
+    //     min-height: 550px;
+    // }
 
     @include breakpointDown($bp-mobile-lg) {
         flex-flow: column nowrap;
