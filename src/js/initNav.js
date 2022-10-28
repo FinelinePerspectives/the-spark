@@ -7,7 +7,7 @@ function initNav() {
     const navMobileOverlay = document.querySelector('.navMobile__overlay');
     const navMobileItems = document.querySelectorAll('.navMobile__item');
 
-    const desktopTrigger = document.querySelector('#hero').getBoundingClientRect().bottom  - 100;
+    const desktopTrigger = document.querySelector('#hero').getBoundingClientRect().bottom + 80;
     const mobileTrigger = document.querySelector('.hero__bg--mobile').getBoundingClientRect().bottom;
 
     function initNavSticky() {
