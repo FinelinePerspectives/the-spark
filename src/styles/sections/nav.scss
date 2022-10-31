@@ -14,8 +14,9 @@
     justify-content: center;
     align-items: center;
 
-    animation: scrollDown 0.2s ease-in-out;
-
+    &.sticky {
+        position: fixed !important;
+    }
 
     .navWrapper {
         max-width: 2560px;
@@ -32,8 +33,6 @@
 
         &.sticky {
             background: $c-dark-brown;
-            position: fixed;
-            animation: scrollDown 0.2s ease-in-out;
 
             .nav__items {
                 display: flex;
@@ -384,15 +383,5 @@
 
     &.active {
         display: block;
-    }
-}
-
-@keyframes scrollDown {
-    from {
-        transition: translateY(-100px);
-        opacity: 0;
-    } to {
-        transition: translateY(0);
-        opacity:1;
     }
 }

@@ -1,5 +1,6 @@
 function initNav() {
     const body = document.querySelector('body');
+    const nav = document.querySelector('nav');
     const navWrapper = document.querySelector('#navWrapper');
     const navSecondary = document.querySelector('#navSecondary');
     const navToggle = document.querySelector('#navToggle');
@@ -15,10 +16,12 @@ function initNav() {
 
         if (window.scrollY >= trigger) {
             body.classList.add('navMargin');
+            nav.classList.add('sticky');
             navWrapper.classList.add('sticky');
             navSecondary.classList.add('sticky');
         } else {
             body.classList.remove('navMargin');
+            nav.classList.remove('sticky');
             navWrapper.classList.remove('sticky');
             navSecondary.classList.remove('sticky');
         }
