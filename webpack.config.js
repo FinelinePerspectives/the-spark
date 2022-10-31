@@ -75,6 +75,7 @@ module.exports = {
             title: 'The Spark',
             filename: 'index.html',
             template: 'src/index.html',
+            favicon: 'src/favicon.png'
         })
     ]
 }

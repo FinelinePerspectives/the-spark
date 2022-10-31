@@ -28,7 +28,10 @@
 
     &__video {
         flex: 1 0 64%;
-        background: $c-light-grey;
+        background: url('../assets/images/img-modelsuite.jpg') $c-light-grey;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
         display: flex;
         justify-content: center;
         align-items: center;
