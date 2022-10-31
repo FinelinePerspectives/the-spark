@@ -260,6 +260,46 @@ function initMapButtons() {
     }));
 }
 
+function returnMapItemHTML(item) {
+    return  `<div class="swiper-slide">
+    <div class="mapCard">
+      <div class="mapCard__header">
+        <p>${item.title}</p>
+      </div>
+
+      <a href="https://maps.google.ca/?q=${item.coords.lat},${item.coords.lng}" target="_blank">
+          <div class="mapCard__image">
+              <img src="${item.image}" alt="${item.title}" />
+          </div>
+      </a>
+
+      <div class="mapCard__info">
+        <div class="mapCard__time" data-transportation="walk">
+          <div
+            class="mapCard__time--icon"
+            data-transportation="walk"
+          ></div>
+          <span>${item.walkTime}min</span>
+        </div>
+        <div class="mapCard__time" data-transportation="bike">
+          <div
+            class="mapCard__time--icon"
+            data-transportation="bike"
+          ></div>
+          <span>${item.bikeTime}min</span>
+        </div>
+        <div class="mapCard__time" data-transportation="car">
+          <div
+            class="mapCard__time--icon"
+            data-transportation="car"
+          ></div>
+          <span>${item.driveTime}min</span>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
 function initMapSwipers() {
     const mapSwipers = ['restaurants', 'shopping', 'lifestyle', 'parks', 'transit'];
 
@@ -272,45 +312,7 @@ function initMapSwipers() {
         let slides = '';
         const items = mapItems.filter(cat => cat.name === swiper)[0].items;
         items.forEach(item => {
-            const slide =
-            `<div class="swiper-slide">
-              <div class="mapCard">
-                <div class="mapCard__header">
-                  <p>${item.title}</p>
-                </div>
-
-                <a href="https://maps.google.ca/?q=${item.coords.lat},${item.coords.lng}" target="_blank">
-                    <div class="mapCard__image">
-                        <img src="${item.image}" alt="${item.title}" />
-                    </div>
-                </a>
-
-                <div class="mapCard__info">
-                  <div class="mapCard__time" data-transportation="walk">
-                    <div
-                      class="mapCard__time--icon"
-                      data-transportation="walk"
-                    ></div>
-                    <span>${item.walkTime}min</span>
-                  </div>
-                  <div class="mapCard__time" data-transportation="bike">
-                    <div
-                      class="mapCard__time--icon"
-                      data-transportation="bike"
-                    ></div>
-                    <span>${item.bikeTime}min</span>
-                  </div>
-                  <div class="mapCard__time" data-transportation="car">
-                    <div
-                      class="mapCard__time--icon"
-                      data-transportation="car"
-                    ></div>
-                    <span>${item.driveTime}min</span>
-                  </div>
-                </div>
-              </div>
-            </div>`;
-
+            const slide = returnMapItemHTML(item);
             slides += slide;
         });
 
