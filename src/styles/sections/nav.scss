@@ -45,6 +45,10 @@
                 }
             }
 
+            .nav__links--desktop {
+                display: block;
+            }
+
             @include breakpointDown($bp-mobile-lg) {
                 .nav__logo--desktop {
                     display: block;
@@ -168,6 +172,10 @@
         @include breakpointDown($bp-tablet-sm) {
             display: none;
         }
+
+        &--desktop {
+            display: none;
+        }
     }
 
     i {
@@ -212,12 +220,29 @@
     background: $c-white;
     color: $c-light-brown;
     height: 100px;
-
     display: flex;
+    flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-
     z-index: 11;
+
+    .contentWrapper {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        column-gap: 20%;
+    }
+
+    i {
+        color: $c-dark-brown;
+        transition: color 0.2s ease-in-out;
+
+        &:hover {
+            color: $c-gold;
+            transition: color 0.2s ease-in-out;
+        }
+    }
 
     @include breakpointDown($bp-tablet-sm) {
         display: none;
@@ -225,6 +250,14 @@
 
     .nav__items {
         display: flex;
+    }
+
+    &__links {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        column-gap: 25px;
     }
 
     &.sticky {

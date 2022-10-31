@@ -36,34 +36,54 @@
       <!--  -->
 
       <section id="navSecondary" class="navSecondary">
-        <ul class="nav__items" id="onePageNav">
-          <li class="onePageNav__reset">
-            <a href="#timeline"></a>
-          </li>
-          <li>
-            <a href="#layouts">
-              <p>Layouts</p>
-            </a>
-          </li>
+        <div class="contentWrapper">
+          <ul class="nav__items" id="onePageNav">
+            <li class="onePageNav__reset">
+              <a href="#timeline"></a>
+            </li>
+            <li>
+              <a href="#layouts">
+                <p>Layouts</p>
+              </a>
+            </li>
 
-          <li>
-            <a href="#amenities">
-              <p>Amenities</p>
-            </a>
-          </li>
+            <li>
+              <a href="#amenities">
+                <p>Amenities</p>
+              </a>
+            </li>
 
-          <li>
-            <a href="#location">
-              <p>Location</p>
-            </a>
-          </li>
+            <li>
+              <a href="#location">
+                <p>Location</p>
+              </a>
+            </li>
 
-          <li>
-            <a href="#contact">
-              <p>Contact</p>
+            <li>
+              <a href="#contact">
+                <p>Contact</p>
+              </a>
+            </li>
+          </ul>
+
+          <div class="navSecondary__links">
+            <a
+              class="navSecondary__links--desktop"
+              href="https://www.instagram.com/"
+              target="_blank"
+            >
+              <i class="fa-brands fa-instagram fa-2xl"></i>
             </a>
-          </li>
-        </ul>
+
+            <a
+              class="navSecondary__links--desktop"
+              href="https://www.facebook.com/"
+              target="_blank"
+            >
+              <i class="fa-brands fa-facebook fa-2xl"></i>
+            </a>
+          </div>
+        </div>
       </section>
 
       <%= require('html-loader!./partials/timeline.html').default %>
