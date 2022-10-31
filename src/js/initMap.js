@@ -4,11 +4,25 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 import mapItems from './mapItems';
+import mapIcon from '../assets/svg/mapIcon.svg';
+const mapLegend = document.querySelector('#mapLegend');
+
+const allMapItems = [];
+let currentMapItems = [];
+let map;
+let prevInfoWindow;
+
+mapItems.forEach(cat => {
+    cat.items.forEach(i => {
+        i.category = cat.name;
+        allMapItems.push(i);
+    });
+});
 
 function initGoogleMap() {
-		let mapCentre = {lat: 45.1024307, lng: -75.5635001};
-        let map = new google.maps.Map(document.getElementById('googleMap'), {
-          zoom: 11,
+		let mapCentre = {lat: 45.4314337, lng: -75.6654839};
+        map = new google.maps.Map(document.getElementById('googleMap'), {
+          zoom: 14,
           styles: [
 {
 "elementType": "geometry",
@@ -215,22 +229,78 @@ function initGoogleMap() {
           center: mapCentre,
           disableDefaultUI: true
         });
-       
-		for (let i = 0; i < mapItems.length; i++) {
-			let icon = {
-				url: mapItems[i].icon,
-				scaledSize: new google.maps.Size(75, 75),
-				origin: new google.maps.Point(0,0),
-				anchor: new google.maps.Point(mapItems[i].anchor[0], mapItems[i].anchor[1])
+       }
 
-			}
+function renderMapMarkers(filter, map) { 
+    if (currentMapItems !== []) currentMapItems.forEach(marker => marker.setMap(null));
 
-			new google.maps.Marker({
-				position:{ lat: mapItems[i].lat, lng: mapItems[i].lang },
-				map: map,
-				icon: icon,			
-			  });
-		}
+    const icon = {
+        url: mapIcon,
+        size: new google.maps.Size(25, 25),
+        scaledSize: new google.maps.Size(25, 25)
+    };
+
+    const items = allMapItems.filter(item => item.category == filter);
+    let legendItems = '';
+
+    items.forEach((item, i) => {
+        const legendItem = `<li class="mapItem__trigger" data-id="${item.id}">${item.title}</li>`;
+        legendItems += legendItem;
+
+        let infoWindow = new google.maps.InfoWindow({ content: '' });
+        const infoWindowContent = returnMapItemPopup(item);
+
+        const latLng = { lat: item.coords.lat, lng: item.coords.lng };
+
+        let marker = new google.maps.Marker({
+            position: latLng,
+            map: map,
+            title: item.title,
+            draggable: false,
+            padding: '10px',
+            icon: icon,
+            zIndex: 8,
+            id: item.id,
+            label:{
+                text: `${i + 1}`,
+                color: 'white',
+                fontFamily: 'Poppins Semi Bold',
+            },
+        })
+
+        google.maps.event.addListener(marker, 'click', function() {
+            if (prevInfoWindow) prevInfoWindow.close();
+
+            const latLng = marker.getPosition();
+            map.setCenter(latLng);
+            infoWindow.close();
+            infoWindow.setContent(infoWindowContent);
+            infoWindow.open({
+                anchor: marker,
+                map,
+                shouldFocus: true
+            })
+
+            prevInfoWindow = infoWindow;
+        })
+
+        google.maps.event.addListener(map, 'click', function() {
+            infoWindow.close();
+        })
+
+        currentMapItems.push(marker);
+        mapLegend.innerHTML = legendItems;
+
+        const currentMapTriggers = document.querySelectorAll('.mapItem__trigger');
+        currentMapTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const id = trigger.getAttribute('data-id');
+                const marker = currentMapItems.filter(marker => marker.id == id)[0];
+                new google.maps.event.trigger(marker, 'click');
+        
+            })
+        })
+    });
 }
 
 function initMapButtons() {
@@ -240,27 +310,25 @@ function initMapButtons() {
         const selectedCategory = btn.getAttribute('data-category');
 
         const selectedBtn = document.querySelector(`.map__controls--btn[data-category='${selectedCategory}']`);
-        const selectedLegend = document.querySelector(`.map__legend[data-category='${selectedCategory}']`);
         const selectedMapSwiper = document.querySelector(`.map__swiper[data-category='${selectedCategory}']`);
         const isActive = btn.classList.contains('active');
 
         if (!isActive) {
             const activeBtn = document.querySelector('.map__controls--btn.active');
-            const activeLegend = document.querySelector('.map__legend.active');
             const activeMapSwiper = document.querySelector('.map__swiper.active');
 
             activeBtn.classList.remove('active');
-            activeLegend.classList.remove('active');
             activeMapSwiper.classList.remove('active');
 
             selectedBtn.classList.add('active');
-            selectedLegend.classList.add('active');
             selectedMapSwiper.classList.add('active');
+
+            renderMapMarkers(selectedCategory, map);
         }
     }));
 }
 
-function returnMapItemHTML(item) {
+function returnMapItemSlide(item) {
     return  `<div class="swiper-slide">
     <div class="mapCard">
       <div class="mapCard__header">
@@ -300,6 +368,46 @@ function returnMapItemHTML(item) {
   </div>`;
 }
 
+function returnMapItemPopup(item) {
+    return  `<div class="swiper-slide">
+    <div class="mapCardPopup">
+      <div class="mapCardPopup__header">
+        <p>${item.title}</p>
+      </div>
+
+      <a href="https://maps.google.ca/?q=${item.coords.lat},${item.coords.lng}" target="_blank">
+          <div class="mapCardPopup__image">
+              <img src="${item.image}" alt="${item.title}" />
+          </div>
+      </a>
+
+      <div class="mapCardPopup__info">
+        <div class="mapCardPopup__time" data-transportation="walk">
+          <div
+            class="mapCardPopup__time--icon"
+            data-transportation="walk"
+          ></div>
+          <span>${item.walkTime}min</span>
+        </div>
+        <div class="mapCardPopup__time" data-transportation="bike">
+          <div
+            class="mapCardPopup__time--icon"
+            data-transportation="bike"
+          ></div>
+          <span>${item.bikeTime}min</span>
+        </div>
+        <div class="mapCardPopup__time" data-transportation="car">
+          <div
+            class="mapCardPopup__time--icon"
+            data-transportation="car"
+          ></div>
+          <span>${item.driveTime}min</span>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
 function initMapSwipers() {
     const mapSwipers = ['restaurants', 'shopping', 'lifestyle', 'parks', 'transit'];
 
@@ -312,7 +420,7 @@ function initMapSwipers() {
         let slides = '';
         const items = mapItems.filter(cat => cat.name === swiper)[0].items;
         items.forEach(item => {
-            const slide = returnMapItemHTML(item);
+            const slide = returnMapItemSlide(item);
             slides += slide;
         });
 
@@ -349,7 +457,8 @@ function initMapSwipers() {
 
 function initMap() {
     initMapButtons();
-    // initGoogleMap();
+    initGoogleMap();
+    renderMapMarkers('restaurants', map);
     initMapSwipers();
 }
 
