@@ -48,11 +48,8 @@ body {
 }
 
 .navMargin {
-    margin-top: 100px;
+    margin-top: 50px;
 
-    @include breakpointDown($bp-tablet-sm) {
-        margin-top: 0;
-    }
 }
 
 .star__bg {

@@ -12,6 +12,20 @@
         row-gap: 25px;
     }
 
+    .vrIcon {
+        path {
+            fill: $c-white;
+            transform: fill 0.2s ease-in-out;
+        }
+
+        &:hover {
+            path {
+                fill: $c-gold;
+                transform: fill 0.2s ease-in-out;
+            }
+        }
+    }
+
     &__item {
         background: $c-dark-brown;
         color: $c-white;

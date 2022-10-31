@@ -3,8 +3,11 @@ import Swiper, { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
+let mapCentre = {lat: 45.431107, lng: -75.663999};
+
 import mapItems from './mapItems';
 import mapIcon from '../assets/svg/mapIcon.svg';
+import TheSparkLogo from '../assets/svg/map-marker.svg';
 const mapLegend = document.querySelector('#mapLegend');
 
 const allMapItems = [];
@@ -20,216 +23,222 @@ mapItems.forEach(cat => {
 });
 
 function initGoogleMap() {
-		let mapCentre = {lat: 45.4314337, lng: -75.6654839};
-        map = new google.maps.Map(document.getElementById('googleMap'), {
-          zoom: 14,
-          styles: [
+    map = new google.maps.Map(document.getElementById('googleMap'), {
+        zoom: 13,
+        styles: [
 {
 "elementType": "geometry",
 "stylers": [
-    {
-    "color": "#f5f5f5"
-    }
+{
+"color": "#f5f5f5"
+}
 ]
 },
 {
 "elementType": "labels.icon",
 "stylers": [
-    {
-    "visibility": "off"
-    }
+{
+"visibility": "off"
+}
 ]
 },
 {
 "elementType": "labels.text.fill",
 "stylers": [
-    {
-    "color": "#616161"
-    }
+{
+"color": "#616161"
+}
 ]
 },
 {
 "elementType": "labels.text.stroke",
 "stylers": [
-    {
-    "color": "#f5f5f5"
-    }
+{
+"color": "#f5f5f5"
+}
 ]
 },
 {
 "featureType": "administrative.land_parcel",
 "stylers": [
-    {
-    "visibility": "off"
-    }
+{
+"visibility": "off"
+}
 ]
 },
 {
 "featureType": "administrative.land_parcel",
 "elementType": "labels.text.fill",
 "stylers": [
-    {
-    "color": "#bdbdbd"
-    }
+{
+"color": "#bdbdbd"
+}
 ]
 },
 {
 "featureType": "administrative.neighborhood",
 "stylers": [
-    {
-    "visibility": "off"
-    }
+{
+"visibility": "off"
+}
 ]
 },
 {
 "featureType": "poi",
 "elementType": "geometry",
 "stylers": [
-    {
-    "color": "#eeeeee"
-    }
+{
+"color": "#eeeeee"
+}
 ]
 },
 {
 "featureType": "poi",
 "elementType": "labels.text",
 "stylers": [
-    {
-    "visibility": "off"
-    }
+{
+"visibility": "off"
+}
 ]
 },
 {
 "featureType": "poi",
 "elementType": "labels.text.fill",
 "stylers": [
-    {
-    "color": "#757575"
-    }
+{
+"color": "#757575"
+}
 ]
 },
 {
 "featureType": "poi.park",
 "elementType": "geometry",
 "stylers": [
-    {
-    "color": "#e5e5e5"
-    }
+{
+"color": "#e5e5e5"
+}
 ]
 },
 {
 "featureType": "poi.park",
 "elementType": "labels.text.fill",
 "stylers": [
-    {
-    "color": "#9e9e9e"
-    }
+{
+"color": "#9e9e9e"
+}
 ]
 },
 {
 "featureType": "road",
 "elementType": "geometry",
 "stylers": [
-    {
-    "color": "#ffffff"
-    }
+{
+"color": "#ffffff"
+}
 ]
 },
 {
 "featureType": "road",
 "elementType": "labels",
 "stylers": [
-    {
-    "visibility": "off"
-    }
+{
+"visibility": "off"
+}
 ]
 },
 {
 "featureType": "road.arterial",
 "elementType": "labels.text.fill",
 "stylers": [
-    {
-    "color": "#757575"
-    }
+{
+"color": "#757575"
+}
 ]
 },
 {
 "featureType": "road.highway",
 "elementType": "geometry",
 "stylers": [
-    {
-    "color": "#dadada"
-    }
+{
+"color": "#dadada"
+}
 ]
 },
 {
 "featureType": "road.highway",
 "elementType": "labels.text.fill",
 "stylers": [
-    {
-    "color": "#616161"
-    }
+{
+"color": "#616161"
+}
 ]
 },
 {
 "featureType": "road.local",
 "elementType": "labels.text.fill",
 "stylers": [
-    {
-    "color": "#9e9e9e"
-    }
+{
+"color": "#9e9e9e"
+}
 ]
 },
 {
 "featureType": "transit.line",
 "elementType": "geometry",
 "stylers": [
-    {
-    "color": "#e5e5e5"
-    }
+{
+"color": "#e5e5e5"
+}
 ]
 },
 {
 "featureType": "transit.station",
 "elementType": "geometry",
 "stylers": [
-    {
-    "color": "#eeeeee"
-    }
+{
+"color": "#eeeeee"
+}
 ]
 },
 {
 "featureType": "water",
 "elementType": "geometry",
 "stylers": [
-    {
-    "color": "#c9c9c9"
-    }
+{
+"color": "#c9c9c9"
+}
 ]
 },
 {
 "featureType": "water",
 "elementType": "labels.text",
 "stylers": [
-    {
-    "visibility": "off"
-    }
+{
+"visibility": "off"
+}
 ]
 },
 {
 "featureType": "water",
 "elementType": "labels.text.fill",
 "stylers": [
-    {
-    "color": "#9e9e9e"
-    }
+{
+"color": "#9e9e9e"
+}
 ]
 }
-          ],
-          center: mapCentre,
-          disableDefaultUI: true
-        });
-       }
+        ],
+        center: mapCentre,
+        disableDefaultUI: true
+    });
+
+    new google.maps.Marker({
+        position: mapCentre,
+        zIndex: 12,
+        map: map,
+        icon: TheSparkLogo
+      });
+}
 
 function renderMapMarkers(filter, map) { 
     if (currentMapItems !== []) currentMapItems.forEach(marker => marker.setMap(null));
@@ -347,21 +356,21 @@ function returnMapItemSlide(item) {
             class="mapCard__time--icon"
             data-transportation="walk"
           ></div>
-          <span>${item.walkTime}min</span>
+          <span>${item.walkTime} min</span>
         </div>
         <div class="mapCard__time" data-transportation="bike">
           <div
             class="mapCard__time--icon"
             data-transportation="bike"
           ></div>
-          <span>${item.bikeTime}min</span>
+          <span>${item.bikeTime} min</span>
         </div>
         <div class="mapCard__time" data-transportation="car">
           <div
             class="mapCard__time--icon"
             data-transportation="car"
           ></div>
-          <span>${item.driveTime}min</span>
+          <span>${item.driveTime} min</span>
         </div>
       </div>
     </div>
