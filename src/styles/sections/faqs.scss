@@ -3,9 +3,9 @@
     color: $c-dark-brown;
     position: relative;
 
-    @include breakpointUp($bp-mobile-lg) {
-        padding-top: 0;
-    }
+    // @include breakpointUp($bp-mobile-lg) {
+    //     padding-top: 0;
+    // }
 
     &__container {
         display: flex;
