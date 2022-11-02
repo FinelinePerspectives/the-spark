@@ -69,6 +69,7 @@
         flex-flow: column nowrap;
         justify-content: flex-start;
         align-items: center;
+        min-height: 500px;
         height: max-content;
         width: 100%;
 
@@ -127,6 +128,8 @@
         padding: 15px 25px;
 
         P {
+            font-family: 'Poppins Semi Bold', sans-serif;
+            color: $c-light-brown;    
             margin: 0;
         }
 
@@ -159,6 +162,7 @@
     &__answer {
         display: none;
         padding: 15px 25px;
+        color: $c-dark-brown;
 
         P {
             margin: 0;

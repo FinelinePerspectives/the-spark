@@ -114,6 +114,12 @@
         .form__consent--copy {
            p {
             font-size: 14px;
+            line-height: 20px;
+
+                @include breakpointDown($bp-mobile-lg) {
+                    font-size: 10px;
+                    line-height: 16px;
+                }
            }
         }
     }

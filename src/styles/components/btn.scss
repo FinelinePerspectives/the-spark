@@ -24,6 +24,18 @@ button {
         transition: all 0.2s ease-in-out;
     }
 
+    &-invert {
+        background: $c-white;
+        color: $c-gold;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            background: $c-gold;
+            color: $c-white;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+
     &-arrow {
         display: flex;
         flex-flow: row nowrap;

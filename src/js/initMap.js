@@ -3,7 +3,7 @@ import Swiper, { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-let mapCentre = {lat: 45.431107, lng: -75.663999};
+let mapCentre = {lat: 45.4314722, lng: -75.6651979};
 
 import mapItems from './mapItems';
 import mapIcon from '../assets/svg/mapIcon.svg';
@@ -23,6 +23,8 @@ mapItems.forEach(cat => {
 });
 
 function initGoogleMap() {
+    const URL = 'https://www.google.com/maps/place/353+Gardner+St,+Vanier,+ON+K1L+7V8/@45.4314722,-75.6651979,19z/data=!3m1!4b1!4m5!3m4!1s0x4cce056cc7bc5ef3:0x6ee953946a4be0d6!8m2!3d45.4314508!4d-75.6646104';
+
     map = new google.maps.Map(document.getElementById('googleMap'), {
         zoom: 13,
         styles: [
@@ -232,11 +234,15 @@ function initGoogleMap() {
         disableDefaultUI: true
     });
 
-    new google.maps.Marker({
+    const logo = new google.maps.Marker({
         position: mapCentre,
         zIndex: 12,
         map: map,
         icon: TheSparkLogo
+      });
+
+      google.maps.event.addListener(logo, 'click', function() {
+        window.open(URL, '_blank');
       });
 }
 
