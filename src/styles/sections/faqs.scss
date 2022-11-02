@@ -36,6 +36,7 @@
 
         @include breakpointDown($bp-tablet-sm) {
             flex: unset;
+            width: 100%;
         }
     }
 
@@ -73,9 +74,9 @@
         height: max-content;
         width: 100%;
 
-        @include breakpointDown($bp-tablet-sm) {
-            width: unset;
-        }
+        // @include breakpointDown($bp-tablet-sm) {
+        //     width: unset;
+        // }
 
         &.active {
             display: flex;
@@ -131,6 +132,12 @@
             font-family: 'Poppins Semi Bold', sans-serif;
             color: $c-light-brown;    
             margin: 0;
+        }
+
+        &--text {
+            @include breakpointDown($bp-tablet-sm) {
+                max-width: 80%;
+            }
         }
 
        &--status {
