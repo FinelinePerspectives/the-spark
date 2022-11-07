@@ -13,6 +13,22 @@
     &__header {
         flex: 1 0 30%;
 
+        &--desktop {
+            display: block;
+
+            @include breakpointDown($bp-desktop-md) {
+                display: none;
+            }
+        }
+
+        &--mobile {
+            display: none;
+
+            @include breakpointDown($bp-desktop-md) {
+                display: block;
+            }
+        }
+
         h2 {
             span {
                 color: $c-gold;

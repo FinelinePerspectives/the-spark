@@ -2,6 +2,25 @@
     background: $c-dark-brown;
     color: $c-white;
 
+    &__header {
+        &--desktop {
+            display: block;
+    
+            @include breakpointDown($bp-desktop-md) {
+                display: none;
+            }
+        }
+    
+        &--mobile {
+            display: none;
+    
+            @include breakpointDown($bp-desktop-md) {
+                display: block;
+            }
+        }
+    
+    }
+
     &__content {
         display: flex;
         flex-flow: row nowrap;

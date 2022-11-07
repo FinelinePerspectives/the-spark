@@ -70,6 +70,9 @@ module.exports = {
         minimize: true,
     },
     plugins: [
+        new MiniCssExtractPlugin({
+            filename: "[name][hash].css",
+        }),
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
             title: 'The Spark',
