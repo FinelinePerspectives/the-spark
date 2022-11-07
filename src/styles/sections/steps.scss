@@ -30,6 +30,19 @@
         background-repeat: no-repeat;
         height: 850px;
 
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+
+        h2 {
+            max-width: 750px;
+            text-align: center;
+
+            @include breakpointDown($bp-tablet-md) {
+                display: none;
+            }
+        }
+
         @include breakpointDown($bp-tablet-md) {
             height: 466px;
             background-position: top left;
