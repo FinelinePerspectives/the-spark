@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlReplaceWebpackPlugin = require('html-replace-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -31,7 +32,7 @@ module.exports = {
         {
             test: /\.css$/i,
             use: ["style-loader", "css-loader"],
-          },
+        },
         {
             test:/\.js$/,
             exclude: /node_modules/,
@@ -79,6 +80,17 @@ module.exports = {
             filename: 'index.html',
             template: 'src/index.html',
             favicon: 'src/favicon.png'
-        })
+        }),
+        new HtmlWebpackPlugin({
+            title: 'The Spark',
+            filename: 'index.php',
+            template: 'src/indexPHP.html',
+            favicon: 'src/favicon.png'
+        }),
+        new HtmlReplaceWebpackPlugin([{
+            pattern: "cms:show_repeatable name=",
+            replacement: "cms:show_repeatable "
+        }
+        ])
     ]
 }

@@ -1,0 +1,467 @@
+<?php require_once( 'admin/cms.php' ); ?>
+<cms:template title="Home Page">
+  <!-- Hero section -->
+  <cms:editable name="hero" label="Hero section" type="group" order="1" />
+  <cms:editable
+    type="text"
+    name="hero__header"
+    label="Hero header"
+    desc="Hero header"
+    group="hero"
+    required="1"
+  />
+  <cms:editable
+    type="text"
+    name="hero__copy1"
+    label="Hero copy 1"
+    desc="Hero copy 1"
+    group="hero"
+    required="1"
+  />
+  <cms:editable
+    type="text"
+    name="hero__copy2"
+    label="Hero copy 2"
+    desc="Hero copy 2"
+    group="hero"
+    required="1"
+  />
+
+  <!-- Timeline section -->
+  <cms:editable
+    name="timeline"
+    label="Timeline section"
+    type="group"
+    order="2"
+  />
+  <cms:editable
+    name="timeline__construction"
+    label="Construction status"
+    opt_values="Underway | Complete"
+    opt_selected="Underway"
+    type="dropdown"
+    group="timeline"
+    required="1"
+  />
+  <cms:editable
+    type="text"
+    name="timeline__completion"
+    label="Timeline completion"
+    desc="Timeline completion"
+    group="timeline"
+    required="1"
+  />
+  <cms:editable
+    type="file"
+    name="timeline__image"
+    label="Timeline image"
+    desc="Timeline image"
+    group="timeline"
+  />
+  <cms:editable
+    name="timeline__phase"
+    label="Current timeline phase"
+    opt_values="1 | 2 | 3 | 4 | 5 | 6"
+    opt_selected="1"
+    type="dropdown"
+    group="timeline"
+    required="1"
+  />
+
+  <!-- Layouts section -->
+  <cms:editable name="layouts" label="Layouts section" type="group" order="3" />
+  <cms:editable
+    type="text"
+    name="layouts__copy"
+    label="Layouts copy"
+    desc="Layouts copy"
+    group="layouts"
+    required="1"
+  />
+
+  <!-- Listings section -->
+  <cms:editable
+    name="listings__display"
+    label="Show or hide listings section"
+    opt_values="Show | Hide"
+    opt_selected="Hide"
+    type="dropdown"
+    order="4"
+  />
+
+  <cms:repeatable name="listings" order="5">
+    <cms:editable
+      name="listings__displayunit"
+      label="Show or hide listing"
+      opt_values="Show | Hide"
+      opt_selected="Hide"
+      type="dropdown"
+      group="misc"
+      col_width="200"
+      required="1"
+    />
+    <cms:editable
+      type="text"
+      name="listings__title"
+      label="Listings title"
+      desc="Listings title"
+      col_width="250"
+      required="1"
+    />
+    <cms:editable
+      type="text"
+      name="listings__price"
+      label="Listings price"
+      desc="Listings price"
+      col_width="250"
+      required="1"
+    />
+    <cms:editable
+      type="file"
+      name="listings__floorplan"
+      label="listings floorplan"
+      desc="listings floorplan"
+      group="listings"
+      col_width="450"
+      required="1"
+    />
+    <cms:editable
+      type="text"
+      name="listings__vr"
+      label="Listings vr"
+      desc="Listings vr"
+      col_width="400"
+    />
+    <cms:editable
+      type="text"
+      name="listings__availability"
+      label="Listings availability"
+      desc="Listings availability"
+      col_width="400"
+      required="1"
+    />
+    <cms:editable
+      type="text"
+      name="listings__btn"
+      label="Listings btn link"
+      desc="Listings btn link"
+      col_width="250"
+      required="1"
+    />
+  </cms:repeatable>
+
+  <!-- Amenities section -->
+  <cms:editable
+    name="amenities"
+    label="Amenities section"
+    type="group"
+    order="6"
+  />
+  <cms:editable
+    type="text"
+    name="amenities__copy1"
+    label="Amenities copy 1"
+    desc="Amenities copy 1"
+    group="amenities"
+    required="1"
+  />
+  <cms:editable
+    type="text"
+    name="amenities__copy2"
+    label="Amenities copy 2"
+    desc="Amenities copy 2"
+    group="amenities"
+    required="1"
+  />
+  <cms:editable
+    type="text"
+    name="lobby__copy"
+    label="Lobby copy"
+    desc="Lobby copy"
+    group="amenities"
+    required="1"
+  />
+  <cms:editable
+    type="text"
+    name="gym__copy"
+    label="Gym copy"
+    desc="Gym copy"
+    group="amenities"
+    required="1"
+  />
+  <cms:editable
+    type="text"
+    name="bikerepair__copy"
+    label="Bike repair copy"
+    desc="Bike repair copy"
+    group="amenities"
+    required="1"
+  />
+  <cms:editable
+    type="text"
+    name="parkinggarage__copy"
+    label="Parking garage copy"
+    desc="Parking garage copy"
+    group="amenities"
+    required="1"
+  />
+  <cms:editable
+    type="text"
+    name="storagelockers__copy"
+    label="Storage lockers copy"
+    desc="Storage lockers copy"
+    group="amenities"
+    required="1"
+  />
+  <cms:editable
+    type="text"
+    name="bikelockers__copy"
+    label="Bike lockers copy"
+    desc="Bike lockers copy"
+    group="amenities"
+    required="1"
+  />
+
+  <!-- FAQ section -->
+  <cms:repeatable name="faqs" order="7">
+    <cms:editable
+      name="faq__category"
+      label="FAQ category"
+      opt_values="The Apartments | The Property | How to Apply"
+      opt_selected="The Apartments"
+      type="dropdown"
+      group="misc"
+      col_width="200"
+      required="1"
+    />
+    <cms:editable
+      type="text"
+      name="faq__question"
+      label="FAQ question"
+      desc="FAQ question"
+      required="1"
+    />
+    <cms:editable
+      type="text"
+      name="faq__answer"
+      label="FAQ answer"
+      desc="FAQ answer"
+      required="1"
+    />
+  </cms:repeatable>
+
+  <!-- About section -->
+  <cms:editable name="about" label="About section" type="group" order="8" />
+  <cms:editable
+    type="text"
+    name="about__copy"
+    label="About copy"
+    desc="About copy"
+    group="about"
+    required="1"
+  />
+
+  <!-- Steps section -->
+  <cms:editable name="steps" label="Steps section" type="group" order="9" />
+  <cms:editable
+    type="text"
+    name="steps__header"
+    label="Steps header"
+    desc="Steps header"
+    group="steps"
+    required="1"
+  />
+  <cms:editable
+    type="text"
+    name="steps__copy1"
+    label="Steps copy 1"
+    desc="Steps copy 1"
+    group="steps"
+    required="1"
+  />
+  <cms:editable
+    type="text"
+    name="steps__copy2"
+    label="Steps copy 2"
+    desc="Steps copy 2"
+    group="steps"
+    required="1"
+  />
+  <cms:editable
+    type="text"
+    name="steps__copy3"
+    label="Steps copy 3"
+    desc="Steps copy 3"
+    group="steps"
+    required="1"
+  />
+
+  <!-- misc -->
+  <cms:editable name="misc" label="Misc info" type="group" order="10" />
+  <cms:editable
+    type="text"
+    name="facebook"
+    label="facebook"
+    desc="facebook"
+    group="misc"
+    required="1"
+  />
+  <cms:editable
+    type="text"
+    name="instagram"
+    label="instagram"
+    desc="instagram"
+    group="misc"
+    required="1"
+  />
+  <cms:editable
+    name="button__cta"
+    label="Select button call to action"
+    opt_values="Register Now | Book Appointment"
+    opt_selected="Register Now"
+    type="dropdown"
+    group="misc"
+  />
+  <cms:editable
+    type="text"
+    name="bookappointment__link"
+    label="Book appointment link"
+    desc="Book appointment link"
+    group="misc"
+    required="1"
+  />
+</cms:template>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Spark</title>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/micromodal/dist/micromodal.min.js"></script>
+    <!-- Google Maps polyfill -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBeGZ5ha4FkhvwlVte4lW63pEvaVt2PViA"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <main class="container" id="top">
+      <div class="navMobile__overlay"></div>
+      <%= require('html-loader!./cms-partials/cms-nav.html').default %>
+      <!--  -->
+      <%= require('html-loader!./cms-partials/cms-hero.html').default %>
+      <!--  -->
+
+      <section id="navSecondary" class="navSecondary">
+        <div class="contentWrapper">
+          <ul class="nav__items" id="onePageNav">
+            <li class="onePageNav__reset">
+              <a href="#timeline"></a>
+            </li>
+            <li>
+              <a href="#layouts">
+                <p>Layouts</p>
+              </a>
+            </li>
+
+            <li>
+              <a href="#amenities">
+                <p>Amenities</p>
+              </a>
+            </li>
+
+            <li>
+              <a href="#location">
+                <p>Location</p>
+              </a>
+            </li>
+
+            <li>
+              <a href="#contact">
+                <p>Contact</p>
+              </a>
+            </li>
+          </ul>
+
+          <div class="navSecondary__links">
+            <a
+              class="navSecondary__links--desktop"
+              href="https://www.instagram.com/"
+              target="_blank"
+            >
+              <i class="fa-brands fa-instagram fa-2xl"></i>
+            </a>
+
+            <a
+              class="navSecondary__links--desktop"
+              href="https://www.facebook.com/"
+              target="_blank"
+            >
+              <i class="fa-brands fa-facebook fa-2xl"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <%= require('html-loader!./cms-partials/cms-timeline.html').default %>
+      <!--  -->
+      <%= require('html-loader!./cms-partials/cms-layouts.html').default %>
+      <!--  -->
+      <%= require('html-loader!./cms-partials/cms-listings.html').default %>
+      <!--  -->
+      <%= require('html-loader!./cms-partials/cms-amenities.html').default %>
+      <!--  -->
+      <%= require('html-loader!./partials/location.html').default %>
+      <!--  -->
+      <%= require('html-loader!./partials/map.html').default %>
+      <!--  -->
+      <%= require('html-loader!./cms-partials/cms-faq.html').default %>
+      <!--  -->
+      <%= require('html-loader!./cms-partials/cms-about.html').default %>
+      <!--  -->
+      <%= require('html-loader!./cms-partials/cms-steps.html').default %>
+      <!--  -->
+      <%= require('html-loader!./partials/contact.html').default %>
+      <!--  -->
+      <%= require('html-loader!./cms-partials/cms-footer.html').default %>
+      <!--  -->
+    </main>
+
+    <section class="vrTour__container">
+      <iframe
+        src="https://finelinevirtualtours.com/2155/Suite02/"
+        id="layoutsVR"
+        frameborder="0"
+        data-class="vrTour__iframe"
+      ></iframe>
+
+      <cms:show_repeatable name="listings">
+        <cms:if listings__vr !="">
+          <iframe
+            src="<cms:show listings__vr />"
+            id="suiteVR<cms:show k_count />"
+            frameborder="0"
+            data-class="vrTour__iframe"
+          ></iframe>
+        </cms:if>
+      </cms:show_repeatable>
+    </section>
+
+    <%= require('html-loader!./partials/registerPopup.html').default %>
+    <!--  -->
+  </body>
+</html>
+<?php COUCH::invoke(); ?>

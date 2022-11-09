@@ -1,12 +1,19 @@
 <section id="timeline" class="timeline sectionPadding">
   <div class="contentWrapper" data-wrapper="outer">
-    <h2>Construction is Underway</h2>
-    <h2>Completion Due XXXX XXXX</h2>
+    <h2>Construction is&nbsp;<cms:show timeline__construction /></h2>
+    <h2>Completion Due&nbsp;<cms:show timeline__completion /></h2>
 
     <div class="timeline__container">
       <div class="timeline__wrapper">
         <div class="timeline__progress-bar--container">
-          <div class="timeline__image"></div>
+          <div
+            class="timeline__image"
+            style="
+              background-image: url('<cms:show timeline__image />');
+              background-position: center;
+              background-size: cover;
+            "
+          ></div>
 
           <div class="timeline__markers">
             <div class="timeline__marker--container">
@@ -85,5 +92,5 @@
       </div>
     </div>
   </div>
-  <input type="number" id="currentPhase" value="2" />
+  <input type="number" id="currentPhase" value="<cms:show timeline__phase />" />
 </section>
