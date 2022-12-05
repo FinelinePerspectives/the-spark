@@ -1,4 +1,4 @@
-const url = 'http://192.99.46.183/~thespark/php/contact_me.php';
+const url = 'https://www.thesparkapartments.ca/php/contact_me.php';
 
 const submitBtnContact = document.querySelector('#submitBtnContact');
 const submitBtnPopup = document.querySelector('#submitBtnPopup');

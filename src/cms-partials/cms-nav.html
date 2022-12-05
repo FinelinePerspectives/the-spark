@@ -44,21 +44,25 @@
       </ul>
 
       <div class="nav__links">
-        <a
+        <cms:if instagram !="">
+          <a
           class="nav__links--desktop"
-          href="https://www.instagram.com/"
+          href="<cms:show instagram />"
           target="_blank"
         >
           <i class="fa-brands fa-instagram fa-2xl"></i>
         </a>
+        </cms:if>
 
-        <a
+        <cms:if facebook !="">
+          <a
           class="nav__links--desktop"
-          href="https://www.facebook.com/"
+          href="<cms:show facebook />"
           target="_blank"
         >
           <i class="fa-brands fa-facebook fa-2xl"></i>
         </a>
+        </cms:if>
 
         <cms:if button__cta = 'Register Now'>
             <button class="btn btn-arrow" data-micromodal-trigger="registerPopup">
@@ -170,21 +174,25 @@
       </button>
 
       <div class="navMobile__links">
-        <a
+        <cms:if instagram !="">
+          <a
           class="navMobile__item"
-          href="https://www.instagram.com/"
+          href="<cms:show instagram />"
           target="_blank"
         >
           <i class="fa-brands fa-instagram fa-2xl"></i>
         </a>
+        </cms:if>
 
-        <a
+        <cms:if facebook !="">
+          <a
           class="navMobile__item"
-          href="https://www.facebook.com/"
+          href="<cms:show facebook />"
           target="_blank"
         >
           <i class="fa-brands fa-facebook fa-2xl"></i>
         </a>
+        </cms:if>
       </div>
     </div>
   </div>

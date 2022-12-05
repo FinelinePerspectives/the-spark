@@ -304,7 +304,6 @@
     label="facebook"
     desc="facebook"
     group="misc"
-    required="1"
   />
   <cms:editable
     type="text"
@@ -312,7 +311,6 @@
     label="instagram"
     desc="instagram"
     group="misc"
-    required="1"
   />
   <cms:editable
     name="button__cta"
@@ -356,6 +354,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="canonical" href="https://www.thesparkapartments.ca/" />
+    <meta
+      keywords="The Spark, Apartment, Rental, Ottawa, Ontario, 353 Gardner
+    Street, K1L 7V8"
+    />
   </head>
   <body>
     <main class="container" id="top">
@@ -397,21 +400,25 @@
           </ul>
 
           <div class="navSecondary__links">
-            <a
-              class="navSecondary__links--desktop"
-              href="https://www.instagram.com/"
-              target="_blank"
-            >
-              <i class="fa-brands fa-instagram fa-2xl"></i>
-            </a>
+            <cms:if instagram !="">
+              <a
+                class="navSecondary__links--desktop"
+                href="<cms:show instagram />"
+                target="_blank"
+              >
+                <i class="fa-brands fa-instagram fa-2xl"></i>
+              </a>
+            </cms:if>
 
-            <a
-              class="navSecondary__links--desktop"
-              href="https://www.facebook.com/"
-              target="_blank"
-            >
-              <i class="fa-brands fa-facebook fa-2xl"></i>
-            </a>
+            <cms:if facebook !="">
+              <a
+                class="navSecondary__links--desktop"
+                href="<cms:show facebook />"
+                target="_blank"
+              >
+                <i class="fa-brands fa-facebook fa-2xl"></i>
+              </a>
+            </cms:if>
           </div>
         </div>
       </section>
