@@ -1,6 +1,10 @@
 function initTimeline() {
     const currentPhase = parseInt(document.querySelector('#currentPhase').value);
     const markers = document.querySelectorAll('.timeline__marker');
+
+    const image = document.querySelector('.timeline__image');
+    image.classList.add(`p${currentPhase}`)
+
     let progress = 0;
 
     if (currentPhase === 1) progress = 12.5;
