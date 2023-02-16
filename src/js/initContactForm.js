@@ -54,10 +54,9 @@ function submitContactForm(id) {
     const userLastName = document.querySelector(`.form-input[name='lastName${id}']`);
     const userEmail = document.querySelector(`.form-input[name='email${id}']`);
     const userPhone = document.querySelector(`.form-input[name='phoneNumber${id}']`);
-    const userMessage = document.querySelector(`.form-input[name='message${id}']`);
     const userConsent = document.querySelector(`.consent${id}`).checked;
 
-    const requiredFields = [userFirstName, userLastName, userEmail, userPhone, userMessage];
+    const requiredFields = [userFirstName, userLastName, userEmail, userPhone];
 
     requiredFields.forEach(input => {
         if (input.value === "") {
@@ -82,7 +81,6 @@ function submitContactForm(id) {
             userLastName: userLastName.value,
             userEmail: userEmail.value,
             userPhone: userPhone.value,
-            userMessage: userMessage.value
         }
 
         postForm(formData, formResponse);
