@@ -1,9 +1,8 @@
 import 'regenerator-runtime/runtime'
 
-export const rhentiUrl = 'https://www.thesparkapartments.ca/listings.php';
+export const rhentiUrl = 'https://www.thesparkapartments.ca/php/listings.php';
 
 export const filterRhentiListings = (arr, filter) => {
-    console.log(arr.Feed.Properties)
     const items = arr.Feed.Properties.filter(p => p.BuildingName === "500 Preston Street",);
     const newArr = items.map(listing => parseRhentiListing(listing));
     return newArr;
@@ -39,7 +38,16 @@ export const parseRhentiListing = (listing) => {
 }
 
 const renderRhentiListing = (listing) => {
-    const { type, price, url, vrTour } = listing;
+    const { bedsDescription, sqft, numOfBeds, price, url, vrTour, den } = listing;
+    let title;
+
+    if (numOfBeds === '1') {
+        title = '1 Bed'
+    } else if (numOfBeds === '1.5') {
+        title = '1 Bed + Den'
+    } else {
+        title = `${numOfBeds} Beds`
+    }
 
     const vrTourIcon = `
     <a
@@ -129,11 +137,11 @@ const renderRhentiListing = (listing) => {
         ` <div class="listings__item">
         <div class="listings__item--header">
           <div>
-            <p class="listings__item--type bold">${type}</p>
-            <p class="listings__item--price">$${price}</p>
+            <p class="listings__item--type bold">${title}</p>
+            <p class="listings__item--type">${sqft} sqft</p>
           </div>
 
-            //   Vr tour goes here
+          <p class="listings__item--price bold">$${price}</p>
         </div>
 
         <div class="listings__item--floorplan">
@@ -162,15 +170,15 @@ const renderRhentiListing = (listing) => {
 
 const rhentiListingsDOM = document.querySelector('#rhentiListings');
 const renderRhentiListings = async () => {
-    $.get(rhentiUrl, function(data) {
-        const filtered = filterRhentiListings(data);
-        let listingsHTML = '';
-        filtered.forEach(listing => {
-            listingsHTML += renderRhentiListing(listing);
-        });
-        rhentiListingsDOM.innerHTML = listingsHTML;
+    const rhentiFeed = await fetch(rhentiUrl);
+    const data = await rhentiFeed.json();
+    const filteredListings = await filterRhentiListings(data);
 
+    let listingsHTML = '';
+    filteredListings.forEach(listing => {
+        listingsHTML += renderRhentiListing(listing);
     });
+    rhentiListingsDOM.innerHTML = listingsHTML;
 }
 
 const images = [
