@@ -8,6 +8,7 @@ import initMap from './js/initMap';
 import initContactForm from './js/initContactForm';
 import initFaqs from './js/initFaqs';
 import onePageNav from './js/onePageNav';
+import './js/rhenti'
 
 $('#onePageNav').onePageNav({
 	currentClass: 'active',

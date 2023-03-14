@@ -34,7 +34,7 @@
     "html-replace-webpack-plugin": "^2.6.0",
     "jquery": "^3.6.0",
     "magnific-popup": "^1.1.0",
-    "regenerator-runtime": "^0.13.9",
+    "regenerator-runtime": "^0.13.11",
     "simplelightbox": "^2.10.3",
     "swiper": "^8.4.2"
   }
