@@ -3,7 +3,7 @@ import 'regenerator-runtime/runtime'
 export const rhentiUrl = 'https://www.thesparkapartments.ca/php/listings.php';
 
 export const filterRhentiListings = (arr, filter) => {
-    const items = arr.Feed.Properties.filter(p => p.BuildingName === "500 Preston Street",);
+    const items = arr.Feed.Properties.filter(p => p.BuildingName === "353 Gardner Street",);
     const newArr = items.map(listing => parseRhentiListing(listing));
     return newArr;
 }
