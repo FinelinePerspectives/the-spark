@@ -4,6 +4,67 @@
 
     text-align: center;
 
+    &__swiper {
+        overflow: hidden;
+        display: flex;
+        flex-flow: row nowrap;
+        column-gap: 30px;
+        max-height: 320px;
+
+        &--wrapper {
+            position: relative;
+            display: none;
+
+            @include breakpointDown($bp-mobile-lg) {
+                display: flex;
+            }
+        }
+
+
+
+
+        .swiper-slide {
+            opacity: 0.25;
+            &-active {
+                opacity: 1;
+            }
+            @include breakpointDown($bp-mobile-lg) {
+                width: 85%;
+                max-width: 300px;
+            }
+        }
+
+        &-pagination {
+            .swiper-pagination-bullet-active {
+                background: $c-dark-brown;
+            }
+        }
+
+        &-prev {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 12.5%;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &-next {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 12.5%;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
     &__container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -13,6 +74,10 @@
 
         @include breakpointDown($bp-tablet-md) {
             grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include breakpointDown($bp-mobile-lg) {
+            display: none;
         }
     }
 
@@ -51,6 +116,10 @@
             padding: 25px 50px;
             width: 100%;
 
+            @include breakpointDown($bp-mobile-lg) {
+                padding: 25px;
+            }
+
             p {
                 text-align: start;
             }
@@ -59,6 +128,10 @@
         &--floorplan {
             display: none;
             padding: 25px 50px;
+
+            @include breakpointDown($bp-mobile-lg) {
+                padding: 25px;
+            }
 
             &.active {
                 display: block;

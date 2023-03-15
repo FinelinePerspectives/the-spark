@@ -1,9 +1,15 @@
 import 'regenerator-runtime/runtime'
+import Swiper, { Navigation, Pagination } from 'swiper';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 
 export const rhentiUrl = 'https://www.thesparkapartments.ca/php/listings.php';
 
 export const filterRhentiListings = (arr, filter) => {
-    const items = arr.Feed.Properties.filter(p => p.BuildingName === "500 Preston Street",);
+    const items = arr.Feed.Properties.filter(p => p.BuildingName === "353 Gardner Street",);
     const newArr = items.map(listing => parseRhentiListing(listing));
     return newArr;
 }
@@ -37,7 +43,7 @@ export const parseRhentiListing = (listing) => {
     };
 }
 
-const renderRhentiListing = (listing) => {
+const renderRhentiListing = (screen, listing) => {
     const { bedsDescription, sqft, numOfBeds, price, url, vrTour, den } = listing;
     let title;
 
@@ -133,7 +139,8 @@ const renderRhentiListing = (listing) => {
   </a>
     `
 
-    return (
+    if (screen === 'desktop') {
+      return (
         ` <div class="listings__item">
         <div class="listings__item--header">
           <div>
@@ -165,20 +172,81 @@ const renderRhentiListing = (listing) => {
             </svg>
         </a>
       </div>`
-    )
+      )
+      } else {
+        return (
+          `<div class="swiper-slide">
+            <div class="listings__item">
+            <div class="listings__item--header">
+              <div>
+                <p class="listings__item--type bold">${title}</p>
+                <p class="listings__item--type">${sqft} sqft</p>
+              </div>
+    
+              <p class="listings__item--price bold">$${price}</p>
+            </div>
+    
+            <div class="listings__item--floorplan">
+            </div>
+    
+            <a href="${url}" target="_blank" class="listings__item--contact" data-col="contact">
+                <p>Inquire Now</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18.055"
+                  height="7.386"
+                  viewBox="0 0 18.055 7.386"
+                >
+                  <path
+                    id="Shape_1"
+                    data-name="Shape 1"
+                    d="M145.243,288.491l-.007,0h13.916l-.082,2.346a.239.239,0,0,0,0,.336l.142.142a.236.236,0,0,0,.334,0l3.441-3.455a.238.238,0,0,0,.069-.168.232.232,0,0,0-.069-.167l-3.441-3.458a.24.24,0,0,0-.334,0l-.142.143a.234.234,0,0,0-.069.167.227.227,0,0,0,.069.164l.093,2.351H145.24a.245.245,0,0,0-.24.243v1.125A.24.24,0,0,0,145.243,288.491Z"
+                    transform="translate(-145 -283.997)"
+                    fill="#fff"
+                  ></path>
+                </svg>
+            </a>
+          </div>
+          </div>`
+      )
+    }
 }
 
-const rhentiListingsDOM = document.querySelector('#rhentiListings');
+const desktopListingsDOM = document.querySelector('#desktopListings');
+const mobileListingsDOM = document.querySelector('#mobileListings');
 const renderRhentiListings = async () => {
     const rhentiFeed = await fetch(rhentiUrl);
     const data = await rhentiFeed.json();
     const filteredListings = await filterRhentiListings(data);
 
-    let listingsHTML = '';
+    let desktopListingsHTML = '';
+    let mobileListingsHTML = '';
     filteredListings.forEach(listing => {
-        listingsHTML += renderRhentiListing(listing);
+      desktopListingsHTML += renderRhentiListing('desktop', listing);
     });
-    rhentiListingsDOM.innerHTML = listingsHTML;
+    desktopListingsDOM.innerHTML = desktopListingsHTML;
+
+    filteredListings.forEach(listing => {
+        mobileListingsHTML += renderRhentiListing('mobile', listing);
+    });
+    mobileListingsDOM.innerHTML = mobileListingsHTML;
+
+    const listingsSwiper = new Swiper(`.listings__swiper`, {
+      slidesPerView: "auto",
+      spaceBetween: 30,
+      loop: true,
+      pagination: {
+        el: '.listings__swiper-pagination',
+        clickable: true
+      },
+      navigation: {
+        nextEl: '.listings__swiper-next',
+        prevEl: '.listings__swiper-prev',
+      },
+      modules: [Navigation, Pagination],
+      centeredSlides: true,
+      // centerMode: true,
+    });
 }
 
 const images = [

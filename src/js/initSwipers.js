@@ -10,7 +10,7 @@ function initSwipers() {
   let stepsSwiper;
 
   layoutsSwiper = new Swiper(`.layouts__swiper`, {
-    slidesPerView: "auto",
+    slidesPerView: 1,
     spaceBetween: 30,
     loop: true,
     pagination: {
