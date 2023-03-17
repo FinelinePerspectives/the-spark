@@ -1,40 +1,94 @@
 .listings {
     background: $c-light-beige;
     color: $c-dark-brown;
-
     text-align: center;
+
+    &.sectionPadding {
+        @include breakpointDown($bp-mobile-lg) {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+    }
+    
+    &__reset {
+        flex: 1 0 23%;
+
+        @include breakpointDown($bp-mobile-lg) {
+            flex: unset;
+        }
+    }
+
+    &__filter {
+        background: $c-dark-brown;
+        color: $c-light-beige;
+        margin-bottom: 25px;
+
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        column-gap: 25px;
+        row-gap: 25px;
+        padding: 25px;
+
+        @include breakpointDown($bp-mobile-lg) {
+            flex-flow: column nowrap;
+        }
+
+        select {
+            flex: 1 0 23%;
+            height: 50px;
+            width: 100%;
+
+            font-family: "Poppins Semi Bold", sans-serif;
+            font-size: 16px;
+            padding: 0 25px;
+
+            @include breakpointDown($bp-mobile-lg) {
+                flex: unset;
+            }
+        }
+    }
 
     &__swiper {
         overflow: hidden;
         display: flex;
         flex-flow: row nowrap;
         column-gap: 30px;
-        max-height: 320px;
+        height: 150px;
+
+        @include breakpointDown($bp-mobile-lg) {
+        }
 
         &--wrapper {
             position: relative;
             display: none;
+            margin-bottom: 25px;
 
             @include breakpointDown($bp-mobile-lg) {
                 display: flex;
+                padding-left: 35px !important;
+                padding-right: 35px !important;
+    
             }
         }
 
-
-
-
         .swiper-slide {
-            opacity: 0.25;
-            &-active {
-                opacity: 1;
-            }
             @include breakpointDown($bp-mobile-lg) {
                 width: 85%;
-                max-width: 300px;
+                max-width: 250px;
+            }
+
+            &.hide {
+                display: none !important;
             }
         }
 
         &-pagination {
+            display: none;
+            @include breakpointDown($bp-mobile-lg) {
+                display: block;
+            }
             .swiper-pagination-bullet-active {
                 background: $c-dark-brown;
             }
@@ -62,6 +116,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+    }
+
+    &__noResults {
+        display: block;
+        &.hide {
+            display: none !important;
         }
     }
 
@@ -107,6 +168,15 @@
 
         font-size: 20px;
         line-height: 14px;
+
+        @include breakpointDown($bp-mobile-lg) {
+            max-width: 250px;
+        }
+
+        &.hide {
+            display: none;
+            animation: 0.25s fadeIn ease-in-out;
+        }
 
         &--header {
             display: flex;
@@ -230,5 +300,13 @@
                 }
             }
         }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
     }
 }

@@ -2,24 +2,54 @@
   <div class="contentWrapper">
     <h2>Featured Listings</h2>
 
-    <div class="listings__container" id="desktopListings">
+    <div class="listings__filter">
+      <select class="listings__select" name="numOfBeds" id="numOfBeds">
+        <option value="*" disabled selected>Num of Beds</option>
+        <option value="1beds">1 Bed</option>
+        <option value="2beds">2 Beds</option>
+      </select>
 
+      <select class="listings__select" name="numOfBaths" id="numOfBaths">
+        <option value="*" disabled selected>Num of Baths</option>
+        <option value="1baths">1 Bath</option>
+        <option value="2baths">2 Baths</option>
+      </select>
+
+      <select class="listings__select" name="sqftRange" id="sqftRange">
+        <option value="*" disabled selected>Sq Ft Range</option>
+        <option value="500">500 - 599</option>
+        <option value="600">600 - 699</option>
+        <option value="700">700 - 799</option>
+        <option value="800">800 - 899</option>
+        <option value="900">900 - 999</option>
+        <option value="1000">1000+</option>
+      </select>
+
+      <div class="listings__item--contact listings__reset" id="reset">
+        Reset
+      </div>
     </div>
+
+    <div class="listings__container" id="desktopListings"></div>
 
     <div class="listings__swiper--wrapper">
       <div class="layouts__row listings__swiper">
-        <div class="swiper-wrapper" id="mobileListings">
-          
-        </div>
+        <div class="swiper-wrapper" id="mobileListings"></div>
       </div>
-  
+
       <div class="listings__swiper-prev">
         <img src="../assets/svg/prev.svg" alt="" />
       </div>
-    
+
       <div class="listings__swiper-next">
         <img src="../assets/svg/next.svg" alt="" />
       </div>
     </div>
   </div>
+
+  <div class="listings__swiper-pagination"></div>
+
+  <p class="listings__noResults hide">
+    Sorry, there are no listings that match your search.
+  </p>
 </section>
