@@ -5,6 +5,18 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+const images = [
+  { id: 'The Spark floorplans', url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans.jpg', walkInCloset: false, terrace: false, balcony: true, barrierFree: true,  ensuite: false },
+  { id: 'The Spark floorplans 2', url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans2.jpg', walkInCloset: true, terrace: false, balcony: true, barrierFree: false,  ensuite: true },
+  { id: 'The Spark floorplans 3' ,url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans3.jpg', walkInCloset: true, terrace: false, balcony: true, barrierFree: false,  ensuite: false },
+  { id: 'The Spark floorplans 4' ,url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans4.jpg', walkInCloset: true, terrace: false, balcony: true, barrierFree: false,  ensuite: true },
+  { id: 'The Spark floorplans 5', url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans5.jpg', walkInCloset: false, terrace: false, balcony: false, barrierFree: true,  ensuite: false },
+  { id: 'The Spark floorplans 6', url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans6.jpg', walkInCloset: false, terrace: false, balcony: false, barrierFree: true,  ensuite: false },
+  { id: 'The Spark floorplans 7', url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans7.jpg', walkInCloset: true, terrace: false, balcony: false, barrierFree: false,  ensuite: false },
+  { id: 'The Spark floorplans 8', url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans8.jpg', walkInCloset: true, terrace: false, balcony: false, barrierFree: false,  ensuite: true },
+  { id: 'The Spark floorplans 9', url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans9.jpg', walkInCloset: true, terrace: true, balcony: false, barrierFree: false,  ensuite: true },
+  { id: 'The Spark floorplans 10', url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans10.jpg', walkInCloset: false, terrace: true, balcony: false, barrierFree: false,  ensuite: false },
+];
 
 export const rhentiUrl = 'https://www.thesparkapartments.ca/php/listings.php';
 
@@ -33,6 +45,7 @@ export const parseRhentiListing = (listing) => {
         vrTour: listing.UnitDetails.VirtualTour ? listing.UnitDetails.VirtualTour : null,
         title: listing.UnitDetails.Title.split('|')[0],
         price: parseInt(listing.UnitDetails.Price),
+        floorplanCode: listing.UnitDetails.FloorPlanCode,
         sqft: listing.UnitDetails.SquareFootage,
         sqftRange: `${Math.floor(listing.UnitDetails.SquareFootage / 100) * 100}`,
         floorplan: imageRef !== "N/A" ? imageUrl : "N/A",
@@ -40,13 +53,18 @@ export const parseRhentiListing = (listing) => {
         den: hasDen,
         ensuite: imageRef.ensuite,
         barrierFree: imageRef.barrierFree,
-        balcony: imageRef.balcony,
+        balcony: hasAmenity('balcony'),
     };
 }
 
 const renderRhentiListing = (screen, listing) => {
-    const { bedsDescription, sqft, sqftRange, numOfBeds, numOfBaths, price, url, vrTour, den } = listing;
+    const { bedsDescription, sqft, sqftRange, numOfBeds, numOfBaths, price, url, vrTour, den, floorplanCode, balcony } = listing;
+
     let title;
+
+    const imageUrl = images.find(img => img.id === floorplanCode) || null;
+    const imageHTML = imageUrl ? `<img src="${imageUrl.url}" alt="" />` : `<div></div>`;
+    
 
     if (numOfBeds === '1') {
         title = '1 Bed'
@@ -58,7 +76,7 @@ const renderRhentiListing = (screen, listing) => {
 
     if (screen === 'desktop') {
       return (
-        ` <div class="listings__item listingCard ${numOfBeds}beds ${numOfBaths}baths ${sqftRange}">
+        `<div class="listings__item listingCard ${numOfBeds}beds ${numOfBaths}baths ${sqftRange} ${balcony ? 'balcony' : '!'}">
         <div class="listings__item--header">
           <div>
             <p class="listings__item--type bold">${title}</p>
@@ -69,6 +87,7 @@ const renderRhentiListing = (screen, listing) => {
         </div>
 
         <div class="listings__item--floorplan">
+          ${imageHTML}
         </div>
 
         <a href="${url}" target="_blank" class="listings__item--contact" data-col="contact">
@@ -92,7 +111,7 @@ const renderRhentiListing = (screen, listing) => {
       )
       } else {
         return (
-          `<div class="swiper-slide listingCard ${numOfBeds}beds ${numOfBaths}baths ${sqftRange}">
+          `<div class="swiper-slide listings__item listingCard ${numOfBeds}beds ${numOfBaths}baths ${sqftRange} ${balcony ? 'balcony' : '!'}">
           <div class="listings__item">
             <div class="listings__item--header">
               <div>
@@ -104,6 +123,7 @@ const renderRhentiListing = (screen, listing) => {
             </div>
     
             <div class="listings__item--floorplan">
+              ${imageHTML}
             </div>
     
             <a href="${url}" target="_blank" class="listings__item--contact" data-col="contact">
@@ -165,26 +185,26 @@ const renderRhentiListings = async () => {
     });
 }
 
-const images = [
-    { id: '6409fca7f4bf63002d87570e',url: 'floorplan-suite-01-compare.png', ensuite: false, barrierFree: false, balcony: true },
-    { id: '640a055d23aec6002d8fb59e',url: 'floorplan-suite-02-compare.png', ensuite: true, barrierFree: false, balcony: true },
-    { id: '640a07abf4bf63002d87622c',url: 'floorplan-suite-03-compare.png', ensuite: false, barrierFree: false, balcony: true },
-    { id: '640a09bf239d04002d9c891b',url: 'floorplan-suite-04-compare.png', ensuite: true, barrierFree: false, balcony: true },
-    { id: '640a0c5b23aec6002d8fbd4b',url: 'floorplan-suite-05-compare.png', ensuite: false, barrierFree: false, balcony: false },
-    { id: '640a11203ba657002db420f3',url: 'floorplan-suite-06-compare.png', ensuite: false, barrierFree: false, balcony: false },
-    { id: '640a142923aec6002d8fc37f',url: 'floorplan-suite-07-compare.png', ensuite: true, barrierFree: true, balcony: true },
-    { id: '640a15733ba657002db424f8',url: 'floorplan-suite-08-compare.png', ensuite: false, barrierFree: false, balcony: false },
-    { id: '640a17e5f4bf63002d876f2f',url: 'floorplan-suite-09-compare.png', ensuite: true, barrierFree: false, balcony: true },
-    { id: '640a1a1a239d04002d9c96fa',url: 'floorplan-suite-10-compare.png', ensuite: false, barrierFree: true, balcony: true },
-];
 
 window.addEventListener('load', () => renderRhentiListings());
 
 let listingsFilters = {
   numOfBeds: '*',
   numOfBaths: '*',
-  sqftRange: '*'
+  sqftRange: '*',
+  balcony: false,
 }
+
+const listingsCheckboxes = document.querySelectorAll('.listings__checkbox');
+listingsCheckboxes.forEach(chk => {
+  chk.addEventListener('click', () => {
+    const input = chk.querySelector('input');
+    const name = input.getAttribute('name');
+    listingsFilters[name] = !listingsFilters[name];
+    chk.classList.toggle('active');
+    filterListings();
+  })
+})
 
 const filterListings = () => {
   const listingsCards = document.querySelectorAll('.listingCard');
@@ -193,6 +213,7 @@ const filterListings = () => {
     listingsFilters.numOfBeds !== '*' && activeFilters.push(listingsFilters.numOfBeds)
     listingsFilters.numOfBaths !== '*' && activeFilters.push(listingsFilters.numOfBaths)
     listingsFilters.sqftRange !== '*' && activeFilters.push(listingsFilters.sqftRange)
+    listingsFilters.balcony && activeFilters.push('balcony')
 
     listingsCards.forEach(card => {
       let hideUnit = false;
