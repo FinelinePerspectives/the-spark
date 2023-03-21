@@ -6,16 +6,17 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const images = [
-  { id: 'The Spark floorplans', url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans.jpg', walkInCloset: false, terrace: false, balcony: true, barrierFree: true,  ensuite: false },
-  { id: 'The Spark floorplans 2', url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans2.jpg', walkInCloset: true, terrace: false, balcony: true, barrierFree: false,  ensuite: true },
-  { id: 'The Spark floorplans 3' ,url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans3.jpg', walkInCloset: true, terrace: false, balcony: true, barrierFree: false,  ensuite: false },
-  { id: 'The Spark floorplans 4' ,url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans4.jpg', walkInCloset: true, terrace: false, balcony: true, barrierFree: false,  ensuite: true },
-  { id: 'The Spark floorplans 5', url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans5.jpg', walkInCloset: false, terrace: false, balcony: false, barrierFree: true,  ensuite: false },
-  { id: 'The Spark floorplans 6', url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans6.jpg', walkInCloset: false, terrace: false, balcony: false, barrierFree: true,  ensuite: false },
-  { id: 'The Spark floorplans 7', url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans7.jpg', walkInCloset: true, terrace: false, balcony: false, barrierFree: false,  ensuite: false },
-  { id: 'The Spark floorplans 8', url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans8.jpg', walkInCloset: true, terrace: false, balcony: false, barrierFree: false,  ensuite: true },
-  { id: 'The Spark floorplans 9', url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans9.jpg', walkInCloset: true, terrace: true, balcony: false, barrierFree: false,  ensuite: true },
-  { id: 'The Spark floorplans 10', url: 'https://thesparkapartments.ca/floorplans/TheSparkfloorplans10.jpg', walkInCloset: false, terrace: true, balcony: false, barrierFree: false,  ensuite: false },
+  { id: 'The Spark floorplans', url: 'https://thesparkapartments.ca/floorplans/suite-01.jpg', walkInCloset: false, terrace: false, balcony: true, barrierFree: true,  ensuite: false },
+  { id: 'The Spark floorplans 2', url: 'https://thesparkapartments.ca/floorplans/suite-02.jpg', walkInCloset: true, terrace: false, balcony: true, barrierFree: false,  ensuite: true },
+  { id: 'The Spark floorplans 3' ,url: 'https://thesparkapartments.ca/floorplans/suite-03.jpg', walkInCloset: true, terrace: false, balcony: true, barrierFree: false,  ensuite: false },
+  { id: 'The Spark floorplans 4' ,url: 'https://thesparkapartments.ca/floorplans/suite-04.jpg', walkInCloset: true, terrace: false, balcony: true, barrierFree: false,  ensuite: true },
+  { id: 'The Spark floorplans 5', url: 'https://thesparkapartments.ca/floorplans/suite-05-1.jpg', walkInCloset: false, terrace: false, balcony: false, barrierFree: true,  ensuite: false },
+  { id: 'The Spark floorplans 6', url: 'https://thesparkapartments.ca/floorplans/suite-05-2.jpg', walkInCloset: false, terrace: false, balcony: false, barrierFree: true,  ensuite: false },
+  { id: 'The Spark floorplans 7', url: 'https://thesparkapartments.ca/floorplans/suite-06.jpg', walkInCloset: true, terrace: false, balcony: false, barrierFree: false,  ensuite: false },
+  { id: 'The Spark floorplans 8', url: 'https://thesparkapartments.ca/floorplans/suite-07.jpg', walkInCloset: true, terrace: false, balcony: false, barrierFree: false,  ensuite: true },
+  { id: 'The Spark floorplans 9', url: 'https://thesparkapartments.ca/floorplans/suite-08.jpg', walkInCloset: true, terrace: true, balcony: false, barrierFree: false,  ensuite: true },
+  { id: 'The Spark floorplans 10', url: 'https://thesparkapartments.ca/floorplans/suite-902.jpg', walkInCloset: false, terrace: true, balcony: false, barrierFree: false,  ensuite: false },
+  { id: 'The Spark floorplans 11', url: 'https://thesparkapartments.ca/floorplans/suite-903.jpg', walkInCloset: false, terrace: true, balcony: false, barrierFree: false,  ensuite: false },
 ];
 
 export const rhentiUrl = 'https://www.thesparkapartments.ca/php/listings.php';
@@ -180,7 +181,7 @@ const renderRhentiListings = async () => {
         prevEl: '.listings__swiper-prev',
       },
       modules: [Navigation, Pagination],
-      centeredSlides: true,
+      // centeredSlides: true,
       // centerMode: true,
     });
 }
