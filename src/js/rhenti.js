@@ -227,7 +227,10 @@ const filterListings = () => {
 
     const noResults = document.querySelector('.listings__noResults');
     const visibleListings = document.querySelectorAll('.listingCard:not(.hide)').length;
+
+    listingsCards.forEach(card => card.classList.add('fadeIn'))
     visibleListings === 0 ? noResults.classList.remove('hide') : noResults.classList.add('hide');
+    setTimeout(() => listingsCards.forEach(card => card.classList.remove('fadeIn')), 500)
 }
 
 const listingSelects = document.querySelectorAll('.listings__select');
@@ -249,8 +252,18 @@ listingsReset.addEventListener('click', () => {
   listingsFilters = {
     numOfBeds: '*',
     numOfBaths: '*',
-    sqftRange: '*'
+    sqftRange: '*',
+    balcony: false
   }
+
+  listingsCheckboxes.forEach(chk => {
+      const input = chk.querySelector('input');
+      input.checked = false;
+      const name = input.getAttribute('name');
+      listingsFilters[name] = false;
+      chk.classList.remove('active');
+      filterListings();
+  })
 
   const listingsCards = document.querySelectorAll('.listingCard');
   listingsCards.forEach(card => card.classList.remove('hide'));
